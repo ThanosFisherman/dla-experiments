@@ -1,4 +1,4 @@
-package io.github.thanosfisherman.game.screen
+package io.github.thanosfisherman.dla.screen
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Texture

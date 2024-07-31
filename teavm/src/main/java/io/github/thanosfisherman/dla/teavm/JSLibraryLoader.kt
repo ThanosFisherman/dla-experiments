@@ -1,4 +1,4 @@
-package io.github.thanosfisherman.game.teavm
+package io.github.thanosfisherman.dla.teavm
 
 import com.github.xpenatan.gdx.backends.teavm.assetloader.AssetLoader
 import com.github.xpenatan.gdx.backends.teavm.assetloader.AssetLoaderListener

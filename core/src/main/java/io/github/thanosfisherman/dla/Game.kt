@@ -1,6 +1,6 @@
-package io.github.thanosfisherman.game
+package io.github.thanosfisherman.dla
 
-import io.github.thanosfisherman.game.screen.FirstScreen
+import io.github.thanosfisherman.dla.screen.FirstScreen
 import ktx.app.KtxGame
 import ktx.app.KtxScreen
 import ktx.log.logger
