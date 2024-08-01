@@ -16,9 +16,9 @@ fun main() {
             val displayMode = Lwjgl3ApplicationConfiguration.getDisplayMode()
             val width = displayMode.width * 0.75f
             val height = width / 16f * 9f
-            setWindowedMode(width.toInt(), height.toInt())
+            setWindowedMode(900,900)
             setWindowIcon(*(arrayOf(128, 64, 32, 16).map { "libgdx$it.png" }.toTypedArray()))
-            setTitle("Game")
+            setTitle("Diffusion-limited aggregation experiments!")
             useVsync(true)
             //// Limits FPS to the refresh rate of the currently active monitor.
             setForegroundFPS(Lwjgl3ApplicationConfiguration.getDisplayMode().refreshRate)
