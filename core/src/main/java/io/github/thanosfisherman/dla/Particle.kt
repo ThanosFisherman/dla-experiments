@@ -1,8 +1,8 @@
 package io.github.thanosfisherman.dla
 
+import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
-import com.badlogic.gdx.math.MathUtils.floor
-import com.badlogic.gdx.math.MathUtils.random
+import com.badlogic.gdx.math.MathUtils.*
 import com.badlogic.gdx.math.Vector2
 import ktx.math.vec2
 
@@ -32,9 +32,22 @@ data class Particle(
         pos.constrain(worldWidth, worldHeight)
     }
 
+    fun updateBias(worldWidth: Float, worldHeight: Float) {
+        val angle = atan2((worldHeight / 2) - pos.y, (worldWidth / 2) - pos.x) * 2f
+        pos.add(-cos(angle), -sin(angle))
+    }
+
+    var hu = 0f
+
+    private val color = Color(0.0f, 0.0f, 0.8f, 1f)
     fun draw(shape: ShapeRenderer) {
-        //shape.circle(pos.x - r, pos.y - r, r * 2)
-        shape.rect(pos.x - r, pos.y - r, 2 * r, 2 * r)
+        shape.circle(pos.y - r, pos.x - r, r )
+        color.r = hu * 0.0006f
+        //color.b = hu * 0.001f
+        shape.color = color
+
+        //shape.rect(pos.y - r, pos.x - r, 2 * r,  r)
+        //shape.point(pos.x, pos.y, 0f)
     }
 
     private fun distSq(a: Vector2, b: Vector2): Float {

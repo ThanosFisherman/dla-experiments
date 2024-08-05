@@ -9,6 +9,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport
 import com.badlogic.gdx.utils.viewport.ScreenViewport
 import io.github.thanosfisherman.dla.FrameRate
 import io.github.thanosfisherman.dla.Simulation
+import ktx.app.KtxInputAdapter
 import ktx.app.KtxScreen
 import ktx.app.clearScreen
 import ktx.assets.disposeSafely
@@ -21,15 +22,27 @@ class FirstScreen : KtxScreen {
     private val shape = ShapeRenderer()
     private val fps = FrameRate()
     private lateinit var simulation: Simulation
+    private var simStarted = false
 
 
     override fun show() {
+        Gdx.input.inputProcessor = object : KtxInputAdapter {
+
+            override fun keyUp(keycode: Int): Boolean {
+
+                if (keycode == Keys.SPACE) {
+                   simStarted = !simStarted
+                }
+                return true
+            }
+        }
         simulation = Simulation(gameViewport.worldWidth, gameViewport.worldHeight)
     }
 
     override fun render(delta: Float) {
         super.render(delta)
         clearScreen(red = 0.0f, green = 0.0f, blue = 0.0f)
+        if (!simStarted) return
 
         fps.update(delta)
         if (Gdx.input.isKeyPressed(Keys.ESCAPE))
@@ -37,9 +50,8 @@ class FirstScreen : KtxScreen {
 
         gameViewport.apply()
         shape.projectionMatrix = gameViewport.camera.combined
-        shape.color = Color.CYAN
-        shape.begin(ShapeRenderer.ShapeType.Filled)
         simulation.update()
+        shape.begin(ShapeRenderer.ShapeType.Filled)
         simulation.draw(shape)
         shape.end()
 
