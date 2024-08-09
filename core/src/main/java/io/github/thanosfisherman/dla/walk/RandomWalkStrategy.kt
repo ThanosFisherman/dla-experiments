@@ -12,5 +12,6 @@ class RandomWalkStrategy: WalkStrategy {
             DOWN -> particle.y -= 1
             LEFT -> particle.x -= 1
         }
+        //constraint particle here
     }
 }

@@ -14,34 +14,35 @@ class Simulation(private val width: Float, private val height: Float) {
 
     var walkStrategy: WalkStrategy = RandomWalkStrategy()
 
-    private val maxWalkers: Int = 100
-    private val iterations = 50
+    private val maxWalkers: Int = 80
+    private val iterations = 100
     private val radius = 1f
     private val walkers = mutableListOf<Particle>()
     private val tree = mutableListOf<Particle>().apply {
-        add(Particle(radius, vec2(width / 2f, height / 2f)))
+        add(Particle(width / 2f, height / 2f,radius))
     }
+
 
 
     private var hu = 0f
     fun update() {
-        while (walkers.size < maxWalkers) {
-            val walker = Particle.randomPoint(radius, width, height)
-            walkers.add(walker)
-        }
-
-        for (n in 0 until iterations) {
-            for (i in walkers.size -1 downTo 0) {
-                val walker: Particle = walkers[i]
-                walker.updateBias(width, height)
-                if (walker.checkStuck(tree)) {
-                    walker.hu = hu
-                    hu += 2
-                    tree.add(walker)
-                    walkers.removeAt(i)
-                }
-            }
-        }
+//        while (walkers.size < maxWalkers) {
+//            val walker = Particle.randomPoint(radius, width, height)
+//            walkers.add(walker)
+//        }
+//
+//        for (n in 0 until iterations) {
+//            for (i in walkers.size -1 downTo 0) {
+//                val walker: Particle = walkers[i]
+//                walker.updateBias(width, height)
+//                if (walker.checkStuck(tree)) {
+//                    walker.hu = hu
+//                    hu += 2
+//                    tree.add(walker)
+//                    walkers.removeAt(i)
+//                }
+//            }
+//        }
     }
 
 
@@ -49,8 +50,8 @@ class Simulation(private val width: Float, private val height: Float) {
         tree.forEach {
             it.draw(shapeRenderer)
         }
-//        walkers.forEach {
-//            it.draw(shapeRenderer)
-//        }
+        walkers.forEach {
+            it.draw(shapeRenderer)
+        }
     }
 }

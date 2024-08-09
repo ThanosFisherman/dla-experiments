@@ -4,7 +4,7 @@ import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.math.RandomXS128
 import com.badlogic.gdx.math.Vector2
 
-inline fun <reified T> Pair<Int, Int>.createArray(initialValue: T) =
+inline fun <reified T> Pair<Int, Int>.createArray(initialValue: T?) =
     Array(this.first) { Array(this.second) { initialValue } }
 
 fun random2D(): Vector2 {
