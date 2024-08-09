@@ -6,11 +6,12 @@ import com.badlogic.gdx.math.MathUtils.*
 import com.badlogic.gdx.math.Vector2
 import ktx.math.vec2
 
+const val RADIUS: Float = 1f
 
 data class Particle(
-    var x: Float = 0f,
-    var y: Float = 0f,
-    val r: Float = 0f,
+    var x: Float,
+    var y: Float,
+    val r: Float = RADIUS,
 ) {
 
     constructor(r: Float, pos: Vector2) : this(pos.x, pos.y, r)
@@ -41,7 +42,7 @@ data class Particle(
 
     private val color = Color(0.0f, 0.0f, 0.8f, 1f)
     fun draw(shape: ShapeRenderer) {
-        shape.circle(pos.y - r, pos.x - r, r )
+        shape.circle(pos.y - r, pos.x - r, r)
         color.r = hu * 0.0006f
         //color.b = hu * 0.001f
         shape.color = color

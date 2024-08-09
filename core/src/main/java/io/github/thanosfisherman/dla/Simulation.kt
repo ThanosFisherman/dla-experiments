@@ -3,12 +3,16 @@ package io.github.thanosfisherman.dla
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.math.MathUtils.random
+import io.github.thanosfisherman.dla.walk.RandomWalkStrategy
+import io.github.thanosfisherman.dla.walk.WalkStrategy
 import ktx.log.logger
 import ktx.math.vec2
 
 private val logger = logger<Simulation>()
 
 class Simulation(private val width: Float, private val height: Float) {
+
+    var walkStrategy: WalkStrategy = RandomWalkStrategy()
 
     private val maxWalkers: Int = 100
     private val iterations = 50
