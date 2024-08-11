@@ -9,6 +9,9 @@ import com.badlogic.gdx.utils.viewport.FitViewport
 import com.badlogic.gdx.utils.viewport.ScreenViewport
 import io.github.thanosfisherman.dla.FrameRate
 import io.github.thanosfisherman.dla.Simulation
+import io.github.thanosfisherman.dla.seed.CenterInitialSeedStrategy
+import io.github.thanosfisherman.dla.spawn.RandomSpawnStrategy
+import io.github.thanosfisherman.dla.walk.RandomWalkStrategy
 import ktx.app.KtxInputAdapter
 import ktx.app.KtxScreen
 import ktx.app.clearScreen
@@ -31,12 +34,18 @@ class FirstScreen : KtxScreen {
             override fun keyUp(keycode: Int): Boolean {
 
                 if (keycode == Keys.SPACE) {
-                   simStarted = !simStarted
+                    simStarted = !simStarted
                 }
                 return true
             }
         }
-        simulation = Simulation(gameViewport.worldWidth, gameViewport.worldHeight)
+        simulation = Simulation(
+            gameViewport.worldWidth,
+            gameViewport.worldHeight,
+            RandomWalkStrategy(gameViewport.worldWidth, gameViewport.worldHeight),
+            CenterInitialSeedStrategy(),
+            RandomSpawnStrategy()
+        )
     }
 
     override fun render(delta: Float) {
@@ -54,7 +63,6 @@ class FirstScreen : KtxScreen {
         shape.begin(ShapeRenderer.ShapeType.Filled)
         simulation.draw(shape)
         shape.end()
-
 
         uiViewport.apply()
         batch.projectionMatrix = uiViewport.camera.combined
