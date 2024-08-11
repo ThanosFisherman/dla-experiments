@@ -1,6 +1,7 @@
 package io.github.thanosfisherman.dla
 
 import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import io.github.thanosfisherman.dla.Config.MAX_WALKERS
 import io.github.thanosfisherman.dla.seed.InitialSeedStrategy
@@ -23,7 +24,6 @@ class Simulation(
         seedStrategy.seed(cluster)
     }
 
-    private var hu = 0f
     fun update() {
         val fps = Gdx.graphics.framesPerSecond
         val refreshRate = Gdx.graphics.displayMode.refreshRate
@@ -35,9 +35,9 @@ class Simulation(
 
         repeat(Config.ITERATIONS) {
             for (i in cluster.walkers().size - 1 downTo 0) {
-                val walker  = cluster.walkers()[i]
+                val walker = cluster.walkers()[i]
                 walkStrategy.walk(walker)
-                if (cluster.isWithinClusterRadius(walker) && cluster.canAttach(walker)) {
+                if (cluster.isContains(walker) && cluster.canAttach(walker)) {
                     cluster.attach(walker)
                 }
             }
@@ -48,10 +48,12 @@ class Simulation(
         cluster.walkers().forEach {
             it.draw(shapeRenderer)
         }
-        cluster.particles.forEach { row ->
-            row.forEach { col ->
-                col?.draw(shapeRenderer)
-            }
+        cluster.dendrite().forEach {
+            it.draw(shapeRenderer)
+        }
+        if (true) {
+            shapeRenderer.rect(cluster.treeMin.x, cluster.treeMin.y,cluster.treeMax.x-cluster.treeMin.x,cluster.treeMax.y - cluster.treeMin.y)
+
         }
     }
 }

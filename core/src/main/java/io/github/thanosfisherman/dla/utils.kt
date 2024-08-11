@@ -31,9 +31,9 @@ fun randomFloatRange(min: Float, max: Float): Float {
 /**
  * all inclusive
  */
-fun randomIntRange(min: Int, max: Int): Int {
-    require(min < max) { "max must be greater than min" }
-    val ran = RandomXS128()
-    val result = min + ran.nextInt((max - min) + 1)
-    return result
-}
+//fun randomIntRange(min: Int, max: Int): Int {
+//    require(min < max) { "max must be greater than min" }
+//    val ran = RandomXS128()
+//    val result = min + ran.nextInt((max - min) + 1)
+//    return result
+//}

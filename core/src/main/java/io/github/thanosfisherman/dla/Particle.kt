@@ -12,13 +12,9 @@ data class Particle(
     var hu = 0f
 
     private val color = Color(0.0f, 0.0f, 0.8f, 1f)
-    fun draw(shape: ShapeRenderer) {
-
-        shape.circle(x, y, r)
-        color.r = hu * 0.0006f
-        //color.b = hu * 0.001f
+    fun draw(shape: ShapeRenderer, color: Color = Color.YELLOW) {
+        shape.circle(x, y, r,8)
         shape.color = color
-
         //shape.rect(pos.y - r, pos.x - r, 2 * r,  r)
         //shape.point(pos.x, pos.y, 0f)
     }

@@ -60,7 +60,7 @@ class FirstScreen : KtxScreen {
         gameViewport.apply()
         shape.projectionMatrix = gameViewport.camera.combined
         simulation.update()
-        shape.begin(ShapeRenderer.ShapeType.Filled)
+        shape.begin(ShapeRenderer.ShapeType.Line)
         simulation.draw(shape)
         shape.end()
 

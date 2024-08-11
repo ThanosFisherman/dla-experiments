@@ -2,15 +2,14 @@ package io.github.thanosfisherman.dla.walk
 
 import io.github.thanosfisherman.dla.Config.SPEED
 import io.github.thanosfisherman.dla.Particle
-import io.github.thanosfisherman.dla.constrain
-import io.github.thanosfisherman.dla.randomIntRange
+import io.github.thanosfisherman.dla.randomFloatRange
 
 class RandomWalkStrategy(private val width: Float, private val height: Float) : WalkStrategy {
     override fun walk(particle: Particle) {
-        val x = randomIntRange(-SPEED, SPEED).toFloat()
-        val y = randomIntRange(-SPEED, SPEED).toFloat()
+        //val v = random2D()
+        val x = randomFloatRange(-SPEED, SPEED)
+        val y = randomFloatRange(-SPEED, SPEED)
         particle.x += x
         particle.y += y
-        particle.constrain(width, height)
     }
 }
