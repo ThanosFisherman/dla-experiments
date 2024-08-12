@@ -2,7 +2,7 @@ package io.github.thanosfisherman.dla.screen
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Input.Keys
-import com.badlogic.gdx.graphics.Color
+import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.utils.viewport.FitViewport
@@ -26,6 +26,7 @@ class FirstScreen : KtxScreen {
     private val fps = FrameRate()
     private lateinit var simulation: Simulation
     private var simStarted = false
+//    private val vector = vec3(Gdx.input.x.toFloat(), Gdx.input.y.toFloat())
 
 
     override fun show() {
@@ -35,6 +36,11 @@ class FirstScreen : KtxScreen {
 
                 if (keycode == Keys.SPACE) {
                     simStarted = !simStarted
+                }
+
+                if (keycode == Keys.F2) {
+                    fps.isRendered = !fps.isRendered
+                    simulation.isDebug = !simulation.isDebug
                 }
                 return true
             }
@@ -46,28 +52,37 @@ class FirstScreen : KtxScreen {
             CenterInitialSeedStrategy(),
             RandomSpawnStrategy()
         )
+
+
     }
 
     override fun render(delta: Float) {
         super.render(delta)
         clearScreen(red = 0.0f, green = 0.0f, blue = 0.0f)
+        Gdx.gl.glEnable(GL20.GL_BLEND)
+        Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA)
+
         if (!simStarted) return
 
         fps.update(delta)
+        simulation.update()
+
         if (Gdx.input.isKeyPressed(Keys.ESCAPE))
             Gdx.app.exit()
 
         gameViewport.apply()
         shape.projectionMatrix = gameViewport.camera.combined
-        simulation.update()
-        shape.begin(ShapeRenderer.ShapeType.Line)
+        shape.begin(ShapeRenderer.ShapeType.Filled)
         simulation.draw(shape)
         shape.end()
 
+//        vector.set(Gdx.input.x.toFloat(), Gdx.input.y.toFloat(), 0f)
+//        gameViewport.camera.unproject(vector)
+//        Gdx.graphics.setTitle("DEBUG - X: ${vector.x} Y: ${vector.y}")
+
         uiViewport.apply()
-        batch.projectionMatrix = uiViewport.camera.combined
-        batch.use {
-            fps.render(it, height = uiViewport.worldHeight)
+        batch.use(uiViewport.camera.combined) {
+            fps.render(it, 0f, uiViewport.worldHeight)
         }
     }
 
@@ -78,7 +93,7 @@ class FirstScreen : KtxScreen {
 
     override fun dispose() {
         batch.disposeSafely()
-        fps.dispose()
-        shape.dispose()
+        fps.disposeSafely()
+        shape.disposeSafely()
     }
 }

@@ -9,7 +9,7 @@ import ktx.assets.disposeSafely
 
 
 class FrameRate : Disposable {
-    var isRendered = true
+    var isRendered = false
     private var sinceChange = 0f
     private var frameRate: Float
     private val font: BitmapFont
