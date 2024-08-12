@@ -1,8 +1,10 @@
 package io.github.thanosfisherman.dla
 
+import ktx.collections.GdxArray
+
 class Cluster(val width: Float, val height: Float) {
-    private val walkers = mutableListOf<Particle>()
-    private val dendrite = mutableListOf<Particle>()
+    private val walkers = GdxArray<Particle>(false, 1000)
+    private val dendrite = GdxArray<Particle>(false, 1000)
 
     val bottomLeft = Particle(width, height)
     val topRight = Particle(0f, 0f)
@@ -14,15 +16,9 @@ class Cluster(val width: Float, val height: Float) {
             field = value
         }
 
-    private fun dist2(particle1: Particle, particle2: Particle): Float {
-        val dx = particle1.x - particle2.x
-        val dy = particle1.y - particle2.y
-        return dx * dx + dy * dy
-    }
+    fun walkers(): GdxArray<Particle> = walkers
 
-    fun walkers(): List<Particle> = walkers
-
-    fun dendrite(): List<Particle> = dendrite
+    fun dendrite(): GdxArray<Particle> = dendrite
 
     fun addWalker(particle: Particle) {
         walkers.add(particle)
@@ -34,7 +30,7 @@ class Cluster(val width: Float, val height: Float) {
 
     fun attach(particle: Particle) {
         dendrite.add(particle)
-        walkers.remove(particle)
+        walkers.removeValue(particle, false)
 
         if (particle.x - particle.r < bottomLeft.x)
             bottomLeft.x = particle.x - particle.r
@@ -51,8 +47,15 @@ class Cluster(val width: Float, val height: Float) {
 
     fun canAttach(particle: Particle): Boolean {
 
+//        val iter = dendrite.iterator()
+//        while (iter.hasNext()) {
+//            val next = iter.next()
+//            val d2 = particle.dist2(next)
+//            if (d2 <= (particle.r + next.r) * (particle.r + next.r))
+//                return true
+//        }
         dendrite.forEach {
-            val d2 = dist2(particle, it)
+            val d2 = particle.dist2(it)
             if (d2 <= (particle.r + it.r) * (particle.r + it.r))
                 return true
         }

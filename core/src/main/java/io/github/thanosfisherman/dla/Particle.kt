@@ -24,3 +24,9 @@ internal fun Particle.constrain(maxWidth: Float, maxHeight: Float) {
     if (this.y <= 0) this.y = (0 + RADIUS)
     if (this.y >= maxHeight) this.y = (maxHeight - RADIUS)
 }
+
+internal fun Particle.dist2(other: Particle): Float {
+    val dx = x - other.x
+    val dy = y - other.y
+    return dx * dx + dy * dy
+}
