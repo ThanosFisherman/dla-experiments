@@ -10,10 +10,10 @@ data class Particle(
     val r: Float = Config.RADIUS,
 ) {
 
-    fun draw(shape: ShapeRenderer, color: Color = Color.YELLOW) {
+    fun draw(shape: ShapeRenderer, color: Color = Color.WHITE) {
         shape.color = color
-        shape.circle(x, y, r, 8)
-        //shape.rect(pos.y - r, pos.x - r, 2 * r,  r)
-        //shape.point(pos.x, pos.y, 0f)
+        //shape.circle(x, y, r, 8)
+        shape.rect(x - r, y - r, 2 * r, 2 * r)
+        //shape.point(x+r, y+r, 0f)
     }
 }

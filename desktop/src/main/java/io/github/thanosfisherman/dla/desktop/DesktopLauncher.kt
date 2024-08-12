@@ -16,7 +16,7 @@ fun main() {
             val displayMode = Lwjgl3ApplicationConfiguration.getDisplayMode()
             val width = displayMode.width * 0.75f
             val height = width / 16f * 9f
-            setWindowedMode(900,900)
+            setWindowedMode(600,600)
             setWindowIcon(*(arrayOf(128, 64, 32, 16).map { "libgdx$it.png" }.toTypedArray()))
             setTitle("Diffusion-limited aggregation experiments!")
             useVsync(true)

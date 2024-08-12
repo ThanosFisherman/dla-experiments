@@ -19,7 +19,7 @@ import ktx.assets.disposeSafely
 import ktx.graphics.use
 
 class FirstScreen : KtxScreen {
-    private val gameViewport = FitViewport(900f, 900f)
+    private val gameViewport = FitViewport(600f, 600f)
     private val uiViewport = ScreenViewport()
     private val batch = SpriteBatch()
     private val shape = ShapeRenderer()
