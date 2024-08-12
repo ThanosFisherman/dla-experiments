@@ -4,14 +4,14 @@ class Cluster(val width: Float, val height: Float) {
     private val walkers = mutableListOf<Particle>()
     private val dendrite = mutableListOf<Particle>()
 
-    val bottomLeft= Particle(width, height)
+    val bottomLeft = Particle(width, height)
     val topRight = Particle(0f, 0f)
 
     // val particles: Array<Array<Particle?>> = Pair(width.toInt(), height.toInt()).createArray(null)
     var seedParticle: Particle = Particle(width / 2, height / 2)
         set(value) {
-            if (attach(value))
-                field = value
+            attach(value)
+            field = value
         }
 
     private fun dist2(particle1: Particle, particle2: Particle): Float {
@@ -29,10 +29,10 @@ class Cluster(val width: Float, val height: Float) {
     }
 
     fun isContained(particle: Particle): Boolean {
-      return (bottomLeft.x < particle.x + particle.r && bottomLeft.y < particle.y + particle.r && topRight.x > particle.x - particle.r && topRight.y > particle.y - particle.r)
+        return (bottomLeft.x < particle.x + particle.r && bottomLeft.y < particle.y + particle.r && topRight.x > particle.x - particle.r && topRight.y > particle.y - particle.r)
     }
 
-    fun attach(particle: Particle): Boolean {
+    fun attach(particle: Particle) {
         dendrite.add(particle)
         walkers.remove(particle)
 
@@ -47,8 +47,6 @@ class Cluster(val width: Float, val height: Float) {
 
         if (particle.y + particle.r > topRight.y)
             topRight.y = particle.y + particle.r
-
-        return true
     }
 
     fun canAttach(particle: Particle): Boolean {

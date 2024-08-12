@@ -46,13 +46,16 @@ class Simulation(
     }
 
     fun draw(shapeRenderer: ShapeRenderer) {
-        cluster.walkers().forEach {
-            it.draw(shapeRenderer)
+
+        with(shapeRenderer) {
+            cluster.walkers().forEach {
+                it.draw(this)
+            }
+            cluster.dendrite().forEach {
+                it.draw(this)
+            }
+            debug(this)
         }
-        cluster.dendrite().forEach {
-            it.draw(shapeRenderer)
-        }
-        debug(shapeRenderer)
     }
 
     private val debugColor = Color(1.0f, 0.0f, 0.0f, 0.4f)
