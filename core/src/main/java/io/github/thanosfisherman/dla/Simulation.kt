@@ -21,7 +21,7 @@ class Simulation(
 ) {
     private val cluster = Cluster(width, height)
     var isDebug = false
-    var hideWalkers = false
+    var hideWalkers = true
 
     init {
         seedStrategy.seed(cluster)
@@ -57,21 +57,30 @@ class Simulation(
         with(shapeRenderer) {
             if (!hideWalkers) {
                 cluster.walkers().forEach {
-                    it.draw(this)
+                    it.draw(this, Color.BLUE)
                 }
             }
             cluster.dendrite().forEach {
-                it.draw(this)
+                it.draw(this, dendriteColor(it))
             }
             debug(this)
         }
     }
 
+    //TODO: maybe use flyweight pattern to share shame instances of Color?
+    private fun dendriteColor(particle: Particle): Color {
+        val hu = particle.lifeTime * 0.00006f
+        val blue = hu * 0.4f
+        val green = hu * 0.2f
+        val red = 0.25f
+        return Color(red, green, blue, 1f)
+    }
+
     private val debugColor = Color(1.0f, 0.0f, 0.0f, 0.4f)
     private fun debug(shapeRenderer: ShapeRenderer) {
         if (isDebug) {
-            cluster.bottomLeft.draw(shapeRenderer, Color.CYAN)
-            cluster.topRight.draw(shapeRenderer, Color.GREEN)
+            cluster.bottomLeft.draw(shapeRenderer)
+            cluster.topRight.draw(shapeRenderer)
             shapeRenderer.color = debugColor
 
             shapeRenderer.rect(
