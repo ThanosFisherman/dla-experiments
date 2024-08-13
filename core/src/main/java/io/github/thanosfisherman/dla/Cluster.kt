@@ -5,6 +5,7 @@ import io.github.thanosfisherman.dla.Config.toIndex
 class Cluster(val width: Float, val height: Float) {
     private val walkers = mutableListOf<Particle>()
     private val dendrite = mutableListOf<Particle>()
+    private var age = 0
 
     val bottomLeft = Particle(width, height)
     val topRight = Particle(0f, 0f)
@@ -41,6 +42,7 @@ class Cluster(val width: Float, val height: Float) {
     fun attach(particle: Particle) {
         particles[toIndex(particle.x)][toIndex(particle.y)].add(particle)
         dendrite.add(particle)
+        age++
 
         if (particle.x - particle.r < bottomLeft.x)
             bottomLeft.x = particle.x - particle.r

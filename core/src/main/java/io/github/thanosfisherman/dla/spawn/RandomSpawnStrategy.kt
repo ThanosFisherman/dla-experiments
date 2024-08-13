@@ -11,7 +11,7 @@ class RandomSpawnStrategy : SpawnStrategy {
         val height = cluster.height
 
         val i: Int = MathUtils.floor(MathUtils.random(4f))
-        val randomRadius = MathUtils.random(1f, RADIUS)
+        val randomRadius = MathUtils.random(0.8f, RADIUS)
         return when (i) {
             0 -> Particle(MathUtils.random(width), 0f, randomRadius)
             1 -> Particle(0f, MathUtils.random(height), randomRadius)

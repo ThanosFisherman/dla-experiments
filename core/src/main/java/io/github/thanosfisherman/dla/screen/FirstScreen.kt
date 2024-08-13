@@ -25,7 +25,8 @@ class FirstScreen : KtxScreen {
     private val shape = ShapeRenderer()
     private val fps = FrameRate()
     private lateinit var simulation: Simulation
-    private var simStarted = true
+    private var simStarted = false
+
 //    private val vector = vec3(Gdx.input.x.toFloat(), Gdx.input.y.toFloat())
 
 
@@ -38,9 +39,13 @@ class FirstScreen : KtxScreen {
                     simStarted = !simStarted
                 }
 
-                if (keycode == Keys.F2) {
+                if (keycode == Keys.D) {
                     fps.isRendered = !fps.isRendered
                     simulation.isDebug = !simulation.isDebug
+                }
+
+                if (keycode == Keys.H) {
+                    simulation.hideWalkers = !simulation.hideWalkers
                 }
                 return true
             }
@@ -60,10 +65,12 @@ class FirstScreen : KtxScreen {
         Gdx.gl.glEnable(GL20.GL_BLEND)
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA)
 
-        if (!simStarted) return
+        if (simStarted) {
+            simulation.update()
+        }
 
         fps.update(delta)
-        simulation.update()
+
 
         if (Gdx.input.isKeyPressed(Keys.ESCAPE))
             Gdx.app.exit()

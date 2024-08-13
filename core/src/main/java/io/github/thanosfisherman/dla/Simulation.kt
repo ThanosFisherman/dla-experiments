@@ -21,6 +21,7 @@ class Simulation(
 ) {
     private val cluster = Cluster(width, height)
     var isDebug = false
+    var hideWalkers = false
 
     init {
         seedStrategy.seed(cluster)
@@ -54,8 +55,10 @@ class Simulation(
     fun draw(shapeRenderer: ShapeRenderer) {
 
         with(shapeRenderer) {
-            cluster.walkers().forEach {
-                it.draw(this)
+            if (!hideWalkers) {
+                cluster.walkers().forEach {
+                    it.draw(this)
+                }
             }
             cluster.dendrite().forEach {
                 it.draw(this)
