@@ -31,8 +31,6 @@ class Simulation(
         val refreshRate = Gdx.graphics.displayMode.refreshRate
 
         if (cluster.walkers().size < MAX_WALKERS * fps / refreshRate) {
-//            logger.debug { cluster.walkers.size.toString() }
-//            logger.debug { "RESULT " +  MAX_WALKERS * fps / 60}
             repeat(100) {
                 cluster.addWalker(spawnStrategy.spawn(cluster))
             }
@@ -51,7 +49,6 @@ class Simulation(
                 }
             }
         }
-        //logger.debug { "walkers size " + cluster.walkers().size }
     }
 
     fun draw(shapeRenderer: ShapeRenderer) {

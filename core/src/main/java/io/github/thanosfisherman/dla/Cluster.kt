@@ -12,7 +12,8 @@ class Cluster(val width: Float, val height: Float) {
     private val cols = toIndex(width)
     private val rows = toIndex(height)
 
-    private val particles: Array<Array<ArrayList<Particle>>> = Pair(cols, rows).createArray(ArrayList())
+    //Kotlin goes nuts with multidimensional arrays
+    private val particles: Array<Array<ArrayList<Particle>>> = Array(cols) { Array(rows) { ArrayList() } }
 
     var seedParticle: Particle = Particle(width / 2, height / 2)
         set(value) {
@@ -39,7 +40,6 @@ class Cluster(val width: Float, val height: Float) {
 
     fun attach(particle: Particle) {
         particles[toIndex(particle.x)][toIndex(particle.y)].add(particle)
-        //println(particles[toIndex(particle.x)][toIndex(particle.y)].walkers.size)
         dendrite.add(particle)
 
         if (particle.x - particle.r < bottomLeft.x)
@@ -62,18 +62,14 @@ class Cluster(val width: Float, val height: Float) {
         for (i in (-1..1)) {
             for (j in (-1..1)) {
                 val walkersInCell = particles[col + i][row + j]
-                //println("num of walkers ${cell.walkers.size}")
                 for (walker in walkersInCell) {
                     val d2 = particle.dist2(walker)
-                    if (d2 < (particle.r + walker.r) * (particle.r + walker.r)) return true
+                    if (d2 < (particle.r + walker.r) * (particle.r + walker.r)) {
+                        return true
+                    }
                 }
             }
         }
-//        dendrite.forEach {
-//            val d2 = particle.dist2(it)
-//            if (d2 <= (particle.r + it.r) * (particle.r + it.r))
-//                return true
-//        }
         return false
     }
 
