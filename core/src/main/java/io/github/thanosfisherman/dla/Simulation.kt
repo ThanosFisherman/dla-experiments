@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import io.github.thanosfisherman.dla.Config.MAX_WALKERS
+import io.github.thanosfisherman.dla.Config.MAX_WALKER_LIFESPAN
 import io.github.thanosfisherman.dla.seed.InitialSeedStrategy
 import io.github.thanosfisherman.dla.spawn.SpawnStrategy
 import io.github.thanosfisherman.dla.walk.WalkStrategy
@@ -32,8 +33,9 @@ class Simulation(
         if (cluster.walkers().size < MAX_WALKERS * fps / refreshRate) {
 //            logger.debug { cluster.walkers.size.toString() }
 //            logger.debug { "RESULT " +  MAX_WALKERS * fps / 60}
-            for (i in 0 until 100)
+            repeat(100) {
                 cluster.addWalker(spawnStrategy.spawn(cluster))
+            }
         }
 
         repeat(Config.ITERATIONS) {
@@ -42,14 +44,14 @@ class Simulation(
                 walkStrategy.walk(walker).also { walker.lifeTime++ }
 
                 if (cluster.isContained(walker) && cluster.canAttach(walker)) {
-                    if (walker.lifeTime > 100) {
+                    if (walker.lifeTime > MAX_WALKER_LIFESPAN) {
                         cluster.attach(walker)
                     }
-                    cluster.removeWalker(i)
+                    cluster.removeWalker(walker)
                 }
             }
         }
-        logger.debug { "walkers size " + cluster.walkers().size }
+        //logger.debug { "walkers size " + cluster.walkers().size }
     }
 
     fun draw(shapeRenderer: ShapeRenderer) {

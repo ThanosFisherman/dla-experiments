@@ -28,9 +28,9 @@ class Cluster(val width: Float, val height: Float) {
         walkers.add(particle)
     }
 
-    fun removeWalker(index: Int) {
+    fun removeWalker(particle: Particle) {
         //walkers.removeValue(particle, false)
-        walkers.removeAt(index)
+        walkers.remove(particle)
     }
 
     fun isContained(particle: Particle): Boolean {
