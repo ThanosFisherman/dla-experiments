@@ -60,7 +60,7 @@ class Cluster(val width: Float, val height: Float) {
     fun canAttach(particle: Particle): Boolean {
         val col = toIndex(particle.x)
         val row = toIndex(particle.y)
-        if (!isEnableSelector(col, row)) return false
+        if (!isExceedGridBounds(col, row)) return false
         for (i in (-1..1)) {
             for (j in (-1..1)) {
                 val walkersInCell = particles[col + i][row + j]
@@ -75,7 +75,7 @@ class Cluster(val width: Float, val height: Float) {
         return false
     }
 
-    private fun isEnableSelector(col: Int, row: Int): Boolean {
+    private fun isExceedGridBounds(col: Int, row: Int): Boolean {
         return col > 1 && row > 1 && col < cols - 1 && row < rows - 1
     }
 }
