@@ -1,27 +1,36 @@
 package io.github.thanosfisherman.dla
 
-import ktx.collections.GdxArray
+import io.github.thanosfisherman.dla.Config.toIndex
 
 class Cluster(val width: Float, val height: Float) {
-    private val walkers = GdxArray<Particle>(false, 1000)
-    private val dendrite = GdxArray<Particle>(false, 1000)
+    private val walkers = mutableListOf<Particle>()
+    private val dendrite = mutableListOf<Particle>()
 
     val bottomLeft = Particle(width, height)
     val topRight = Particle(0f, 0f)
 
-    // val particles: Array<Array<Particle?>> = Pair(width.toInt(), height.toInt()).createArray(null)
+    private val cols = toIndex(width)
+    private val rows = toIndex(height)
+
+    private val particles: Array<Array<ArrayList<Particle>>> = Pair(cols, rows).createArray(ArrayList())
+
     var seedParticle: Particle = Particle(width / 2, height / 2)
         set(value) {
             attach(value)
             field = value
         }
 
-    fun walkers(): GdxArray<Particle> = walkers
+    fun walkers(): List<Particle> = walkers
 
-    fun dendrite(): GdxArray<Particle> = dendrite
+    fun dendrite(): List<Particle> = dendrite
 
     fun addWalker(particle: Particle) {
         walkers.add(particle)
+    }
+
+    fun removeWalker(index: Int) {
+        //walkers.removeValue(particle, false)
+        walkers.removeAt(index)
     }
 
     fun isContained(particle: Particle): Boolean {
@@ -29,8 +38,9 @@ class Cluster(val width: Float, val height: Float) {
     }
 
     fun attach(particle: Particle) {
+        particles[toIndex(particle.x)][toIndex(particle.y)].add(particle)
+        //println(particles[toIndex(particle.x)][toIndex(particle.y)].walkers.size)
         dendrite.add(particle)
-        walkers.removeValue(particle, false)
 
         if (particle.x - particle.r < bottomLeft.x)
             bottomLeft.x = particle.x - particle.r
@@ -46,19 +56,28 @@ class Cluster(val width: Float, val height: Float) {
     }
 
     fun canAttach(particle: Particle): Boolean {
-
-//        val iter = dendrite.iterator()
-//        while (iter.hasNext()) {
-//            val next = iter.next()
-//            val d2 = particle.dist2(next)
-//            if (d2 <= (particle.r + next.r) * (particle.r + next.r))
+        val col = toIndex(particle.x)
+        val row = toIndex(particle.y)
+        if (!isEnableSelector(col, row)) return false
+        for (i in (-1..1)) {
+            for (j in (-1..1)) {
+                val walkersInCell = particles[col + i][row + j]
+                //println("num of walkers ${cell.walkers.size}")
+                for (walker in walkersInCell) {
+                    val d2 = particle.dist2(walker)
+                    if (d2 < (particle.r + walker.r) * (particle.r + walker.r)) return true
+                }
+            }
+        }
+//        dendrite.forEach {
+//            val d2 = particle.dist2(it)
+//            if (d2 <= (particle.r + it.r) * (particle.r + it.r))
 //                return true
 //        }
-        dendrite.forEach {
-            val d2 = particle.dist2(it)
-            if (d2 <= (particle.r + it.r) * (particle.r + it.r))
-                return true
-        }
         return false
+    }
+
+    private fun isEnableSelector(col: Int, row: Int): Boolean {
+        return col > 1 && row > 1 && col < cols - 1 && row < rows - 1
     }
 }

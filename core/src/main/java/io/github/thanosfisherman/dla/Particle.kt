@@ -9,7 +9,9 @@ data class Particle(
     var x: Float,
     var y: Float,
     val r: Float = RADIUS,
-)
+) {
+    var lifeTime: Int = 0
+}
 
 internal fun Particle.draw(shape: ShapeRenderer, color: Color = Color.WHITE) {
     shape.color = color
@@ -18,11 +20,14 @@ internal fun Particle.draw(shape: ShapeRenderer, color: Color = Color.WHITE) {
     //shape.point(x+r, y+r, 0f)
 }
 
-internal fun Particle.constrain(maxWidth: Float, maxHeight: Float) {
-    if (this.x <= 0) this.x = (0 + RADIUS)
-    if (this.x >= maxWidth) this.x = (maxWidth - RADIUS)
-    if (this.y <= 0) this.y = (0 + RADIUS)
-    if (this.y >= maxHeight) this.y = (maxHeight - RADIUS)
+internal fun Particle.constrainX(low: Float, high: Float) {
+    if (this.x < low) this.x = low
+    if (this.x > high) this.x = high
+}
+
+internal fun Particle.constrainY(low: Float, high: Float) {
+    if (this.y < low) this.y = low
+    if (this.y > high) this.y = high
 }
 
 internal fun Particle.dist2(other: Particle): Float {

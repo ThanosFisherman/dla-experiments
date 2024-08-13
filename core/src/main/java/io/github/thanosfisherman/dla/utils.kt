@@ -1,8 +1,6 @@
 package io.github.thanosfisherman.dla
 
-import com.badlogic.gdx.math.RandomXS128
-
-inline fun <reified T> Pair<Int, Int>.createArray(initialValue: T?) =
+inline fun <reified T> Pair<Int, Int>.createArray(initialValue: T) =
     Array(this.first) { Array(this.second) { initialValue } }
 
 //fun random2D(): Vector2 {
@@ -11,13 +9,11 @@ inline fun <reified T> Pair<Int, Int>.createArray(initialValue: T?) =
 //}
 
 
-private val ran = RandomXS128()
-
-fun randomFloatRange(min: Float, max: Float): Float {
-    require(min < max) { "max must be greater than min" }
-    val result = min + ran.nextFloat() * (max - min)
-    return result
-}
+//fun randomFloatRange(min: Float, max: Float): Float {
+//    require(min < max) { "max must be greater than min" }
+//    val result = min + ran.nextFloat() * (max - min)
+//    return result
+//}
 
 /**
  * all inclusive

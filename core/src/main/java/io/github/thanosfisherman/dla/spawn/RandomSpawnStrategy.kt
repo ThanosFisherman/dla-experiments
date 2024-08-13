@@ -1,17 +1,20 @@
 package io.github.thanosfisherman.dla.spawn
 
+import com.badlogic.gdx.math.MathUtils
 import io.github.thanosfisherman.dla.Cluster
-import io.github.thanosfisherman.dla.Config.RADIUS
 import io.github.thanosfisherman.dla.Particle
-import io.github.thanosfisherman.dla.randomFloatRange
 
 class RandomSpawnStrategy : SpawnStrategy {
     override fun spawn(cluster: Cluster): Particle {
-        val width = cluster.width - RADIUS
-        val height = cluster.height - RADIUS
+        val width = cluster.width
+        val height = cluster.height
 
-        val x = randomFloatRange(0f + RADIUS, width)
-        val y = randomFloatRange(0f + RADIUS, height)
-        return Particle(x, y)
+        val i: Int = MathUtils.floor(MathUtils.random(4f))
+        return when (i) {
+            0 -> Particle(MathUtils.random(width), 0f)
+            1 -> Particle(0f, MathUtils.random(height))
+            2 -> Particle(MathUtils.random(width), height)
+            else -> Particle(width, MathUtils.random(height))
+        }
     }
 }

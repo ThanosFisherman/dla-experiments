@@ -28,21 +28,28 @@ class Simulation(
     fun update() {
         val fps = Gdx.graphics.framesPerSecond
         val refreshRate = Gdx.graphics.displayMode.refreshRate
+
         if (cluster.walkers().size < MAX_WALKERS * fps / refreshRate) {
-            repeat(100) {
+//            logger.debug { cluster.walkers.size.toString() }
+//            logger.debug { "RESULT " +  MAX_WALKERS * fps / 60}
+            for (i in 0 until 100)
                 cluster.addWalker(spawnStrategy.spawn(cluster))
-            }
         }
 
         repeat(Config.ITERATIONS) {
             for (i in cluster.walkers().size - 1 downTo 0) {
                 val walker = cluster.walkers()[i]
-                walkStrategy.walk(walker)
+                walkStrategy.walk(walker).also { walker.lifeTime++ }
+
                 if (cluster.isContained(walker) && cluster.canAttach(walker)) {
-                    cluster.attach(walker)
+                    if (walker.lifeTime > 100) {
+                        cluster.attach(walker)
+                    }
+                    cluster.removeWalker(i)
                 }
             }
         }
+        logger.debug { "walkers size " + cluster.walkers().size }
     }
 
     fun draw(shapeRenderer: ShapeRenderer) {

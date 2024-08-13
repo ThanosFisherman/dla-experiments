@@ -25,7 +25,7 @@ class FirstScreen : KtxScreen {
     private val shape = ShapeRenderer()
     private val fps = FrameRate()
     private lateinit var simulation: Simulation
-    private var simStarted = false
+    private var simStarted = true
 //    private val vector = vec3(Gdx.input.x.toFloat(), Gdx.input.y.toFloat())
 
 
@@ -52,8 +52,6 @@ class FirstScreen : KtxScreen {
             CenterInitialSeedStrategy(),
             RandomSpawnStrategy()
         )
-
-
     }
 
     override fun render(delta: Float) {
