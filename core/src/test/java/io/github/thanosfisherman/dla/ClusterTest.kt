@@ -30,5 +30,3 @@ class ClusterTest {
         }
     }
 }
-
-data class Cell(val walkers: ArrayList<Int>)
