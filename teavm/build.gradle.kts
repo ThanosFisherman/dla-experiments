@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "io.github.thanosfisherman.dla.teavm"
-version = "1.0-SNAPSHOT"
+version = "1.0.0"
 
 gretty {
     contextPath = "/"
