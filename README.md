@@ -1,5 +1,4 @@
-Diffusion-limited aggregation playground
----------------------------
+# Diffusion-limited aggregation playground
 
 Try the online version here or download the desktop binaries from the releases section here
 
