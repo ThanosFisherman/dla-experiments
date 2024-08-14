@@ -1,0 +1,15 @@
+{
+  "resources":{
+    "includes":[
+      {
+        "pattern": "libgdx\\d+\\.png"
+      },
+      {
+        "pattern":"lsans.+"
+      },
+      {
+        "pattern":".+\\.glsl"
+      }
+    ]},
+  "bundles":[]
+}
