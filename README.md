@@ -1,6 +1,6 @@
 # Diffusion-limited aggregation playground
 
-Try the online version here or download the desktop binaries from the releases section here
+Try the online version [here](https://thanosfisherman.github.io/dla-experiments/) or download the desktop binaries from the releases section [here](https://github.com/ThanosFisherman/dla-experiments/releases)
 
 ## What's this?
 
