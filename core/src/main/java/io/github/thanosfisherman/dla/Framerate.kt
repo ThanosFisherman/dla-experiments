@@ -31,10 +31,12 @@ class FrameRate : Disposable {
         }
     }
 
-    fun render(batch: SpriteBatch, width: Float = 0f, height: Float = 16f) {
+    fun render(batch: SpriteBatch, walkers: Int, tree: Int, width: Float = 0f, height: Float = 16f) {
         if (!isRendered) return
 
         font.draw(batch, frameRate.toInt().toString() + " fps", width, height)
+        font.draw(batch, "Walker count $walkers", width, height - 16)
+        font.draw(batch, "Walkers on tree $tree", width, height - 32)
     }
 
     override fun dispose() {

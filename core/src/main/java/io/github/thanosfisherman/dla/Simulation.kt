@@ -27,6 +27,9 @@ class Simulation(
         seedStrategy.seed(cluster)
     }
 
+    fun walkerCount() = cluster.walkers().size
+    fun treeCount() = cluster.dendrite().size
+
     fun update() {
         val fps = Gdx.graphics.framesPerSecond
         val refreshRate = Gdx.graphics.displayMode.refreshRate
