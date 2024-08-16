@@ -14,8 +14,7 @@
         overflow: hidden
       }
       #progress {
-        position: fixed;
-        display: block;
+          display: block;
         box-sizing: border-box;
         position: absolute;
         z-index: 1;
@@ -52,25 +51,25 @@
     </style>
 </head>
 <body oncontextmenu="return false" onload="main()">
-<div>
+<div style="vertical-align: center; align-content: center; align-items: center; text-align: center; padding-top: 4px">
   <div id="progress">
     <img id="progress-img" src="startup-logo.png">
     <div id="progress-box">
       <div id="progress-bar"></div>
     </div>
   </div>
-  <canvas id="canvas" width="600" height="600"></canvas>
+  <canvas id="canvas" width="800" height="800"></canvas>
 </div>
 <script>
-  var maxPercentage = 25;
-  var delay = 500;
-  var bar = document.getElementById("progress-bar");
-  if (bar) {
-    var barStyle = bar.style;
-    barStyle.width = "0%";
+    const maxPercentage = 25;
+    let delay = 500;
+    const bar = document.getElementById("progress-bar");
+    if (bar) {
+        let barStyle = bar.style;
+        barStyle.width = "0%";
     function barUpdater() {
-      var percentage = parseInt(barStyle.width, 10);
-      if (percentage < maxPercentage) {
+        let percentage = parseInt(barStyle.width, 10);
+        if (percentage < maxPercentage) {
         percentage++;
         barStyle.width = percentage + "%";
         delay += 25;

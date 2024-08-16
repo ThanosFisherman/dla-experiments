@@ -19,7 +19,7 @@ import ktx.assets.disposeSafely
 import ktx.graphics.use
 
 class FirstScreen : KtxScreen {
-    private val gameViewport = FitViewport(600f, 600f)
+    private val gameViewport = FitViewport(800f, 800f)
     private val uiViewport = ScreenViewport()
     private val batch = SpriteBatch()
     private val shape = ShapeRenderer()
@@ -49,7 +49,13 @@ class FirstScreen : KtxScreen {
                 }
                 return true
             }
+
+            override fun touchUp(screenX: Int, screenY: Int, pointer: Int, button: Int): Boolean {
+                simStarted = !simStarted
+                return true
+            }
         }
+
         simulation = Simulation(
             gameViewport.worldWidth,
             gameViewport.worldHeight,

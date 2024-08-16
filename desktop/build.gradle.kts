@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "io.github.thanosfisherman.dla.desktop"
-version = "1.0.0"
+version = "1.1.0"
 
 dependencies {
     addDesktopDependencies()

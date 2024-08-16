@@ -14,8 +14,8 @@ fun main() {
     teaBuildConfiguration.assetsPath.add(AssetFileHandle("../assets"))
     teaBuildConfiguration.webappPath = File("build/dist").getCanonicalPath()
     teaBuildConfiguration.htmlTitle = "Diffusion-limited aggregation by Thanos!"
-    teaBuildConfiguration.htmlWidth = 600
-    teaBuildConfiguration.htmlHeight = 600
+    teaBuildConfiguration.htmlWidth = 800
+    teaBuildConfiguration.htmlHeight = 800
 
     // Register any extra classpath assets here:
     // teaBuildConfiguration.additionalAssetsClasspathFiles.add("io.github.thanosfisherman.dla/asset.extension");
