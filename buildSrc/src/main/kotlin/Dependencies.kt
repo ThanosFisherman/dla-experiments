@@ -61,6 +61,8 @@ object Dependencies {
 
         const val gdxTeaVM = "com.github.xpenatan.gdx-teavm:backend-teavm:${Versions.Libgdx.gdxTeaVMVersion}"
         const val gdxTeaVMAssetLoader = "com.github.xpenatan.gdx-teavm:asset-loader:${Versions.Libgdx.gdxTeaVMVersion}"
+        const val juniperDigitalTeaVM = "com.github.tommyettinger:digital:${Versions.Libgdx.juniperDigitalVersion}:sources"
+        const val juniperTeaVM = "com.github.tommyettinger:juniper:${Versions.Libgdx.juniperVersion}:sources"
 
         //        const val gdxTeaVMFreeType =
 //            "com.github.xpenatan.gdx-teavm:gdx-freetype-teavm:${Versions.Libgdx.gdxTeaVMVersion}"
@@ -135,6 +137,7 @@ object Dependencies {
             "com.badlogicgames.gdx-controllers:gdx-controllers-core:${Versions.Libgdx.gdxControllersVersion}"
         const val ashley = "com.badlogicgames.ashley:ashley:${Versions.Libgdx.ashleyVersion}"
         const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
+        const val juniper =  "com.github.tommyettinger:juniper:${Versions.Libgdx.juniperVersion}"
 //        const val controllerMapping = "de.golfgl.gdxcontrollerutils:gdx-controllerutils-mapping:${Versions.Libgdx.gdxControllerUtilsVersion}"
 //        const val controllerScene2D = "de.golfgl.gdxcontrollerutils:gdx-controllerutils-scene2d:${Versions.Libgdx.gdxControllerUtilsVersion}"
         //const val ode4j = "com.github.antzGames:gdx-ode4j:${Versions.Libgdx.ode4jVersion}"

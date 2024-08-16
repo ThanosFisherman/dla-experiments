@@ -59,18 +59,19 @@ class Cluster(val width: Float, val height: Float) {
         val col = toIndex(particle.x)
         val row = toIndex(particle.y)
         if (!isExceedGridBounds(col, row)) return false
-        for (i in (-1..1)) {
-            for (j in (-1..1)) {
-                val walkersInCell = particles[col + i][row + j]
-                for (walker in walkersInCell) {
-                    val d2 = particle.dist2(walker)
-                    if (d2 < (particle.r + walker.r) * (particle.r + walker.r)) {
-                        return true
-                    }
-                }
-            }
-        }
-        return false
+//        for (i in (-1..1)) {
+//            for (j in (-1..1)) {
+//                val walkersInCell = particles[col + i][row + j]
+//                for (walker in walkersInCell) {
+//                    val d2 = particle.dist2(walker)
+//                    if (d2 < (particle.r + walker.r) * (particle.r + walker.r)) {
+//                        return true
+//                    }
+//                }
+//            }
+//        }
+
+        return Neighbours.findNeighbouringCells(particle, col, row, particles)
     }
 
     private fun isExceedGridBounds(col: Int, row: Int): Boolean {

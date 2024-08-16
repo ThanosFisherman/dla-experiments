@@ -1,8 +1,8 @@
 package io.github.thanosfisherman.dla.spawn
 
-import com.badlogic.gdx.math.MathUtils
 import io.github.thanosfisherman.dla.Cluster
 import io.github.thanosfisherman.dla.Config.RADIUS
+import io.github.thanosfisherman.dla.Juniper
 import io.github.thanosfisherman.dla.Particle
 
 class RandomSpawnStrategy : SpawnStrategy {
@@ -10,13 +10,13 @@ class RandomSpawnStrategy : SpawnStrategy {
         val width = cluster.width
         val height = cluster.height
 
-        val i: Int = MathUtils.floor(MathUtils.random(4f))
-        val randomRadius = MathUtils.random(0.8f, RADIUS)
+        val i: Int = Juniper.random.nextInt(4)
+        val randomRadius = Juniper.random.nextFloat(0.8f, RADIUS)
         return when (i) {
-            0 -> Particle(MathUtils.random(width), 0f, randomRadius)
-            1 -> Particle(0f, MathUtils.random(height), randomRadius)
-            2 -> Particle(MathUtils.random(width), height, randomRadius)
-            else -> Particle(width, MathUtils.random(height), randomRadius)
+            0 -> Particle(Juniper.random.nextFloat(width), 0f, randomRadius)
+            1 -> Particle(0f, Juniper.random.nextFloat(height), randomRadius)
+            2 -> Particle(Juniper.random.nextFloat(width), height, randomRadius)
+            else -> Particle(width, Juniper.random.nextFloat(height), randomRadius)
         }
     }
 }
