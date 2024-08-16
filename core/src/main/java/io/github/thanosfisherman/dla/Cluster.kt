@@ -1,11 +1,10 @@
 package io.github.thanosfisherman.dla
 
 import io.github.thanosfisherman.dla.Config.toIndex
-import ktx.collections.GdxArray
 
 class Cluster(val width: Float, val height: Float) {
-    private val walkers = GdxArray<Particle>(false, 1000)
-    private val dendrite = GdxArray<Particle>(false, 1000)
+    private val walkers = mutableListOf<Particle>()
+    private val dendrite = mutableListOf<Particle>()
 
     val bottomLeft = Particle(width, height)
     val topRight = Particle(0f, 0f)
@@ -14,7 +13,7 @@ class Cluster(val width: Float, val height: Float) {
     private val rows = toIndex(height)
 
     //Kotlin goes nuts with multidimensional arrays
-    private val particles: Array<Array<GdxArray<Particle>>> = Array(cols) { Array(rows) { GdxArray(false, 26) } }
+    private val particles: Array<Array<MutableList<Particle>>> = Array(cols) { Array(rows) { mutableListOf() } }
 
     var seedParticle: Particle = Particle(width / 2, height / 2)
         set(value) {
@@ -22,17 +21,17 @@ class Cluster(val width: Float, val height: Float) {
             field = value
         }
 
-    fun walkers(): GdxArray<Particle> = walkers
+    fun walkers(): List<Particle> = walkers
 
-    fun dendrite(): GdxArray<Particle> = dendrite
+    fun dendrite(): List<Particle> = dendrite
 
     fun addWalker(particle: Particle) {
         walkers.add(particle)
     }
 
     fun removeWalker(particle: Particle) {
-        walkers.removeValue(particle, false)
-        //walkers.remove(particle)
+        //walkers.removeValue(particle, false)
+        walkers.remove(particle)
     }
 
     fun isContained(particle: Particle): Boolean {
