@@ -3,8 +3,8 @@ package io.github.thanosfisherman.dla
 import io.github.thanosfisherman.dla.Config.toIndex
 
 class Cluster(val width: Float, val height: Float) {
-    private val walkers = mutableListOf<Particle>()
-    private val dendrite = mutableListOf<Particle>()
+    val walkers = mutableListOf<Particle>()
+    val dendrite = mutableListOf<Particle>()
 
     val bottomLeft = Particle(width, height)
     val topRight = Particle(0f, 0f)
@@ -20,10 +20,6 @@ class Cluster(val width: Float, val height: Float) {
             attach(value)
             field = value
         }
-
-    fun walkers(): List<Particle> = walkers
-
-    fun dendrite(): List<Particle> = dendrite
 
     fun addWalker(particle: Particle) {
         walkers.add(particle)

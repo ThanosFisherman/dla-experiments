@@ -27,22 +27,22 @@ class Simulation(
         seedStrategy.seed(cluster)
     }
 
-    fun walkerCount() = cluster.walkers().size
-    fun treeCount() = cluster.dendrite().size
+    fun walkerCount() = cluster.walkers.size
+    fun treeCount() = cluster.dendrite.size
 
     fun update() {
         val fps = Gdx.graphics.framesPerSecond
         val refreshRate = Gdx.graphics.displayMode.refreshRate
 
-        if (cluster.walkers().size < MAX_WALKERS * fps / refreshRate) {
+        if (cluster.walkers.size < MAX_WALKERS * fps / refreshRate) {
             repeat(100) {
                 cluster.addWalker(spawnStrategy.spawn(cluster))
             }
         }
 
-        repeat(Config.ITERATIONS) {
-            for (i in cluster.walkers().size - 1 downTo 0) {
-                val walker = cluster.walkers()[i]
+        for (index in 0 until Config.ITERATIONS) {
+            for (i in cluster.walkers.size - 1 downTo 0) {
+                val walker = cluster.walkers[i]
                 walkStrategy.walk(walker).also { walker.lifeTime++ }
 
                 if (cluster.isContained(walker) && cluster.canAttach(walker)) {
@@ -56,21 +56,18 @@ class Simulation(
     }
 
     fun draw(shapeRenderer: ShapeRenderer) {
-
-        with(shapeRenderer) {
-            if (!hideWalkers) {
-                cluster.walkers().forEach {
-                    it.draw(this, Color.BLUE)
-                }
+        if (!hideWalkers) {
+            cluster.walkers.forEach {
+                it.draw(shapeRenderer, Color.BLUE)
             }
-            cluster.dendrite().forEach {
-                it.draw(this, dendriteColor(it))
-            }
-            debug(this)
         }
+        cluster.dendrite.forEach {
+            it.draw(shapeRenderer, dendriteColor(it))
+        }
+        debug(shapeRenderer)
     }
 
-    //TODO: maybe use flyweight pattern to share shame instances of Color?
+    //TODO: maybe use flyweight pattern to share same instances of Color?
     private fun dendriteColor(particle: Particle): Color {
         val hu = particle.lifeTime * 0.00006f
         val blue = hu * 0.4f
