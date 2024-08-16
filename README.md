@@ -8,7 +8,7 @@ It's my take on **Diffusion-limited aggregation** algorithm (DLA) using a two-di
 
 
 OK enough with the buzzwordary. It's just a bunch of pixels flying around randomly while eventually getting stuck together. Read more about it from the links attached at the end.
-DLA, is an extraordinarily simple computer simulation although a **VERY CPU intensive** one as it turns out. Fortunatelly I made a ***bLaZiNgLy FAST*** 🚀 desktop version. The web version still sucks though but it's a rather quick and nice way to get an idea of the simulation.
+DLA, is an extraordinarily simple computer simulation although a **VERY CPU intensive** one as it turns out. Fortunatelly I made a ***bLaZiNgLy FAST*** 🚀 desktop version. The web version is slower but it's a rather easy and nice way to get an idea of the simulation.
 
 ## Usage
 
