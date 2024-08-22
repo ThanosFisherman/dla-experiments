@@ -10,7 +10,7 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport
 import io.github.thanosfisherman.dla.FrameRate
 import io.github.thanosfisherman.dla.Simulation
 import io.github.thanosfisherman.dla.seed.CenterInitialSeedStrategy
-import io.github.thanosfisherman.dla.spawn.RandomSpawnStrategy
+import io.github.thanosfisherman.dla.spawn.RandomAllOverSpawnStrategy
 import io.github.thanosfisherman.dla.walk.RandomWalkStrategy
 import ktx.app.KtxInputAdapter
 import ktx.app.KtxScreen
@@ -61,7 +61,7 @@ class FirstScreen : KtxScreen {
             gameViewport.worldHeight,
             RandomWalkStrategy(gameViewport.worldWidth, gameViewport.worldHeight),
             CenterInitialSeedStrategy(),
-            RandomSpawnStrategy()
+            RandomAllOverSpawnStrategy()
         )
     }
 
