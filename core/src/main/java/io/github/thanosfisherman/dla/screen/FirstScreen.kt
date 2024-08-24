@@ -1,5 +1,6 @@
 package io.github.thanosfisherman.dla.screen
 
+import com.badlogic.gdx.Application
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Input.Keys
 import com.badlogic.gdx.files.FileHandle
@@ -46,7 +47,11 @@ class FirstScreen : KtxScreen {
                         fps.isRendered = !fps.isRendered; simulation.isDebug = !simulation.isDebug
                     }
 
-                    Keys.S -> screenshot()
+                    Keys.S -> {
+                        if (Gdx.app.type == Application.ApplicationType.Desktop) {
+                            screenshot()
+                        }
+                    }
                 }
                 return true
             }
@@ -70,6 +75,10 @@ class FirstScreen : KtxScreen {
         clearScreen(red = 0.0f, green = 0.0f, blue = 0.0f)
         Gdx.gl.glEnable(GL20.GL_BLEND)
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA)
+
+        if (simulation.treeCount() >= 80000) {
+            simStarted = false
+        }
 
         if (simStarted) {
             simulation.update()
