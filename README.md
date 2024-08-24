@@ -18,7 +18,7 @@ DLA, is an extraordinarily simple computer simulation although a **VERY CPU inte
 
 ## Screenshot
 
-![Screenshot from 2024-08-15 00-15-30](https://github.com/user-attachments/assets/b4c8fac7-35af-4d2b-8e9c-e4e5a5b03a1d)
+![dlathanos](https://github.com/user-attachments/assets/f02e9537-2958-4181-885f-e5689b1739c0)
 
 ## Helpful Resources
 
