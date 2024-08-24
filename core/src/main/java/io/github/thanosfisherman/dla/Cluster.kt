@@ -26,7 +26,6 @@ class Cluster(val width: Float, val height: Float) {
     }
 
     fun removeWalker(particle: Particle) {
-        //walkers.removeValue(particle, false)
         walkers.remove(particle)
     }
 

@@ -11,7 +11,7 @@ class RandomSpawnStrategy : SpawnStrategy {
         val height = cluster.height
 
         val i: Int = Juniper.random.nextInt(4)
-        val randomRadius = Juniper.random.nextFloat(0.8f, RADIUS)
+        val randomRadius = RADIUS //Juniper.random.nextFloat(0.8f, RADIUS)
         return when (i) {
             0 -> Particle(Juniper.random.nextFloat(width), 0f, randomRadius)
             1 -> Particle(0f, Juniper.random.nextFloat(height), randomRadius)
