@@ -72,7 +72,7 @@ class Simulation(
         val hu = particle.lifeTime * 0.00006f
         val blue = hu * 0.4f
         val green = hu * 0.2f
-        val red = 0.25f
+        val red = 0.2f
         return Color(red, green, blue, 1f)
     }
 

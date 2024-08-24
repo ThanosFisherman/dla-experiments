@@ -6,7 +6,7 @@ object Config {
     const val ITERATIONS = 1000
     const val MAX_WALKERS = 1000
     const val MAX_WALKER_LIFESPAN = 100
-    private const val SPLITTER: Int = 3
+    private const val SPLITTER: Int = 4
 
     fun toIndex(xy: Float): Int = (xy / SPLITTER).toInt()
 
