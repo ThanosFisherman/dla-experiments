@@ -92,7 +92,7 @@ class FirstScreen : KtxScreen {
         gameViewport.apply()
 
         shape.use(ShapeRenderer.ShapeType.Filled, gameViewport.camera.combined) {
-            simulation.draw(shape)
+            simulation.draw(it)
         }
 
 //        vector.set(Gdx.input.x.toFloat(), Gdx.input.y.toFloat(), 0f)
