@@ -16,7 +16,8 @@ fun main() {
             val displayMode = Lwjgl3ApplicationConfiguration.getDisplayMode()
             val width = displayMode.width * 0.75f
             val height = width / 16f * 9f
-            setWindowedMode(800,800)
+            setWindowedMode(width.toInt(),height.toInt())
+            //setFullscreenMode(displayMode)
             setWindowIcon(*(arrayOf(128, 64, 32, 16).map { "libgdx$it.png" }.toTypedArray()))
             setTitle("Diffusion-limited aggregation experiments!")
             useVsync(true)
@@ -25,7 +26,7 @@ fun main() {
             //// If you remove the above line and set Vsync to false, you can get unlimited FPS, which can be
             //// useful for testing performance, but can also be very stressful to some hardware.
             //// You may also need to configure GPU drivers to fully disable Vsync; this can cause screen tearing.
-            //setBackBufferConfig(8,8,8,8,16,8,4)
+            setBackBufferConfig(8,8,8,8,24,8,4)
         }
 
     Lwjgl3Application(Game(), config)

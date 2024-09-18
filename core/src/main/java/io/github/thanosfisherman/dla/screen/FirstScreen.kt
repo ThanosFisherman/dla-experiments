@@ -9,7 +9,6 @@ import com.badlogic.gdx.graphics.Pixmap
 import com.badlogic.gdx.graphics.PixmapIO
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
-import com.badlogic.gdx.utils.viewport.FitViewport
 import com.badlogic.gdx.utils.viewport.ScreenViewport
 import io.github.thanosfisherman.dla.FrameRate
 import io.github.thanosfisherman.dla.Simulation
@@ -24,7 +23,7 @@ import ktx.graphics.use
 import java.util.zip.Deflater
 
 class FirstScreen : KtxScreen {
-    private val gameViewport = FitViewport(800f, 800f)
+    private val gameViewport = ScreenViewport()
     private val uiViewport = ScreenViewport()
     private val batch = SpriteBatch()
     private val shape = ShapeRenderer()
@@ -75,10 +74,6 @@ class FirstScreen : KtxScreen {
         clearScreen(red = 0.0f, green = 0.0f, blue = 0.0f)
         Gdx.gl.glEnable(GL20.GL_BLEND)
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA)
-
-        if (simulation.treeCount() >= 80000) {
-            simStarted = false
-        }
 
         if (simStarted) {
             simulation.update()
