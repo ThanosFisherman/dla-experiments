@@ -35,6 +35,9 @@ class FirstScreen : KtxScreen {
 
 
     override fun show() {
+
+        println("OpenGL renderer: " + Gdx.gl.glGetString(GL20.GL_RENDERER));
+        println("OpenGL vendor: " + Gdx.gl.glGetString(GL20.GL_VENDOR));
         Gdx.input.inputProcessor = object : KtxInputAdapter {
 
             override fun keyUp(keycode: Int): Boolean {
@@ -98,6 +101,7 @@ class FirstScreen : KtxScreen {
         batch.use(uiViewport.camera.combined) {
             fps.render(it, simulation.walkerCount(), simulation.treeCount(), 0f, uiViewport.worldHeight)
         }
+
     }
 
     override fun resize(width: Int, height: Int) {

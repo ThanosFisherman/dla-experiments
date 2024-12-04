@@ -10,6 +10,7 @@ fun DependencyHandler.addCoreKtxDependencies() {
 
 fun DependencyHandler.addDesktopDependencies() {
     implementation(project(ModuleDependencies.CORE))
+    implementation("com.github.dgzt.gdx.lwjgl3:gdx-lwjgl3-angle-vulkan")
     Dependencies.DesktopDependency.getAll().forEach { implementation(it) }
 }
 
