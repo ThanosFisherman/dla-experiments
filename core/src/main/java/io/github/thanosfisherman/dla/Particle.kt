@@ -46,7 +46,7 @@ internal fun Particle.constrainAngleRad(angle: Float, minAngle: Float, maxAngle:
     y = vector.y
 }
 
-internal fun Particle.angleRad(referenceX: Float,referenceY: Float): Float {
+internal fun Particle.angleRad(referenceX: Float, referenceY: Float): Float {
     val vector = vec2(x, y)
     return vector.angleRad(vec2(referenceX, referenceY))
 }
@@ -75,10 +75,13 @@ internal fun Particle.dist2(other: Particle): Float {
 }
 
 internal fun Vector2.reflectDeg(degrees: Int): Vector2 {
+    return reflectRad(degrees * MathUtils.degreesToRadians)
+}
 
-    val degToRad = degrees * MathUtils.degreesToRadians
-    val cos = MathUtils.cos(2 * degToRad)
-    val sin = MathUtils.sin(2 * degToRad)
+internal fun Vector2.reflectRad(angleRad: Float): Vector2 {
+
+    val cos = MathUtils.cos(2 * angleRad)
+    val sin = MathUtils.sin(2 * angleRad)
 
     val newX = this.x * cos + this.y * sin
     val newY = this.x * sin - this.y * cos
@@ -93,16 +96,24 @@ internal fun Vector2.reflectAroundDeg(reference: Vector2, degrees: Int): Vector2
     return this
 }
 
-internal fun Particle.reflect(referenceX: Float, referenceY: Float): Particle {
+internal fun Particle.reflectRad(angleRad: Float): Particle {
     val vec = vec2(x, y)
-    val reference = vec2(referenceX, referenceY)
-    vec.reflectAroundDeg(reference, 180)
+    // val reference = vec2(referenceX, referenceY)
+    vec.reflectRad(angleRad)
     return Particle(vec.x, vec.y)
 }
 
-internal fun Particle.rotate(referenceX: Float, referenceY: Float): Particle {
+internal fun Particle.rotateRad(angleRad: Float): Particle {
     val vec = vec2(x, y)
-    val reference = vec2(referenceX, referenceY)
-    vec.rotateAroundDeg(reference, 30f)
+    // val reference = vec2(referenceX, referenceY)
+    vec.rotateRad(angleRad)
     return Particle(vec.x, vec.y)
+}
+
+internal fun Particle.reflectDeg(angleDeg: Float): Particle {
+    return reflectRad(angleDeg * MathUtils.degreesToRadians)
+}
+
+internal fun Particle.rotateDeg(angleDeg: Float): Particle {
+    return rotateRad(angleDeg * MathUtils.degreesToRadians)
 }

@@ -1,42 +1,47 @@
 package io.github.thanosfisherman.dla.snowflake
 
-import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.math.Vector2
-import io.github.thanosfisherman.dla.Config
-import io.github.thanosfisherman.dla.Juniper
-import io.github.thanosfisherman.dla.Particle
-import io.github.thanosfisherman.dla.draw
+import io.github.thanosfisherman.dla.*
 import ktx.math.vec2
 
 
 class Snowflake(private val width: Float, private val height: Float) {
 
     private val snowflakes = mutableListOf<Particle>()
-    private var particleVector = vec2(1f, 0f)
+    private var particleVector = vec2((height / 2) - 10, 10f)
 
     fun update() {
 
+        var counter = 0
         while (!isFinished(particleVector) && !isCollide(particleVector, snowflakes)) {
             updateParticleMovement()
+            counter++
         }
 
-
-
-
-        if (isFinished(particleVector) || isCollide(particleVector, snowflakes)) {
-            snowflakes.add(Particle(particleVector.x, particleVector.y))
-            particleVector = vec2(width / 2, Juniper.random.nextInt(30).toFloat())
+        if (counter == 0) {
+            return
         }
 
-
+        snowflakes.add(Particle(particleVector.x, particleVector.y))
+        particleVector = vec2((height / 2) - 10, Juniper.random.nextInt(10).toFloat())
     }
 
     fun draw(shape: ShapeRenderer) {
 
-        snowflakes.forEach {
-            it.draw(shape)
+        snowflakes.forEach { part ->
+
+            var p = part
+            var refl: Particle
+            repeat(6) {
+                p = p.rotateRad(MathUtils.PI / 3)
+                refl = p.reflectRad(MathUtils.PI / 3)
+                val alignPart = p.rotateRad(MathUtils.PI / 6)
+                val alignRefl = refl.rotateRad(MathUtils.PI / 6)
+                alignPart.draw(shape)
+                alignRefl.draw(shape)
+            }
         }
     }
 
@@ -51,13 +56,13 @@ class Snowflake(private val width: Float, private val height: Float) {
     }
 
     private fun isFinished(particle: Vector2): Boolean {
-        return particle.x < 10
+        return particle.x < 5
     }
 
     private fun updateParticleMovement() {
 
         particleVector.x -= 2f
-        particleVector.y += Juniper.random.nextInt(-15, 15).toFloat()
+        particleVector.y += Juniper.random.nextInt(-10, 10).toFloat()
 
         var angleRad = particleVector.angleRad()
 
