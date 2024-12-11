@@ -50,6 +50,9 @@ class SecondScreen : KtxScreen {
                     Keys.D -> {
                         fps.isRendered = !fps.isRendered
                     }
+                    Keys.N -> {
+                        snowflake = Snowflake(gameViewport.worldWidth, gameViewport.worldHeight)
+                    }
 
                     Keys.S -> {
                         if (Gdx.app.type == Application.ApplicationType.Desktop) {
