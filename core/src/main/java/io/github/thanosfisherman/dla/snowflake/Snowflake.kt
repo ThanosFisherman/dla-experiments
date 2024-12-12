@@ -1,5 +1,6 @@
 package io.github.thanosfisherman.dla.snowflake
 
+import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.math.Vector2
@@ -11,6 +12,7 @@ class Snowflake(private val width: Float, private val height: Float) {
 
     private val snowflakes = mutableListOf<Particle>()
     private var particleVector = vec2((height / 2) - 10, 10f)
+    private val color = Color.valueOf("#8de3fc").apply { a = 0.7f }
 
     fun update() {
 
@@ -39,8 +41,8 @@ class Snowflake(private val width: Float, private val height: Float) {
                 refl = p.reflectRad(MathUtils.PI / 3)
                 val alignPart = p.rotateRad(MathUtils.PI / 6)
                 val alignRefl = refl.rotateRad(MathUtils.PI / 6)
-                alignPart.draw(shape)
-                alignRefl.draw(shape)
+                alignPart.draw(shape, color)
+                alignRefl.draw(shape, color)
             }
         }
     }

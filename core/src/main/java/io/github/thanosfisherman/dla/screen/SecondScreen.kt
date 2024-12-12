@@ -2,8 +2,10 @@ package io.github.thanosfisherman.dla.screen
 
 import com.badlogic.gdx.Application
 import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.Input
 import com.badlogic.gdx.Input.Keys
-import com.badlogic.gdx.graphics.Color
+import com.badlogic.gdx.graphics.GL20
+import com.badlogic.gdx.graphics.OrthographicCamera
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.math.Vector2
@@ -25,6 +27,7 @@ class SecondScreen : KtxScreen {
     private val batch = SpriteBatch()
     private val shape = ShapeRenderer()
     private val fps = FrameRate()
+    private val camera = gameViewport.camera as OrthographicCamera
 
     //private val vectorMouse = vec3()
 
@@ -33,6 +36,7 @@ class SecondScreen : KtxScreen {
     private var simStarted = false
     private lateinit var snowflake: Snowflake
     private lateinit var screenShot: HighResScreenshot
+    private val rotationSpeed = 0.5f
 
 //    private val vector = vec3(Gdx.input.x.toFloat(), Gdx.input.y.toFloat())
 
@@ -50,6 +54,7 @@ class SecondScreen : KtxScreen {
                     Keys.D -> {
                         fps.isRendered = !fps.isRendered
                     }
+
                     Keys.N -> {
                         snowflake = Snowflake(gameViewport.worldWidth, gameViewport.worldHeight)
                     }
@@ -80,11 +85,13 @@ class SecondScreen : KtxScreen {
     override fun render(delta: Float) {
         super.render(delta)
         clearScreen(red = 0.0f, green = 0.0f, blue = 0.0f)
-
+        Gdx.gl.glEnable(GL20.GL_BLEND)
+        Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA)
         if (!simStarted) {
             return
         }
 
+        handleInput()
         fps.update(delta)
 
         if (Gdx.input.isKeyPressed(Keys.ESCAPE))
@@ -99,30 +106,27 @@ class SecondScreen : KtxScreen {
 
         snowflake.update()
         shape.use(ShapeRenderer.ShapeType.Filled, gameViewport.camera.combined) {
-            it.rectLine(
-                0f,
-                0f,
-                gameViewport.worldWidth,
-                0f,
-                5f,
-                Color.RED,
-                Color.RED,
-            )
+            /*          it.rectLine(
+                          0f,
+                          0f,
+                          gameViewport.worldWidth,
+                          0f,
+                          5f,
+                          Color.RED,
+                          Color.RED,
+                      )
 
-            it.rectLine(
-                0f,
-                0f,
-                vector30.x,
-                vector30.y,
-                5f,
-                Color.GREEN,
-                Color.GREEN,
-            )
+                      it.rectLine(
+                          0f,
+                          0f,
+                          vector30.x,
+                          vector30.y,
+                          5f,
+                          Color.GREEN,
+                          Color.GREEN,
+                      )*/
 
             snowflake.draw(it)
-//            val newpart = screenCenter.cpy().add(vectorPart)
-//            it.circle(newpart.x, newpart.y, 8f)
-
         }
 
         //vectorMouse.set(Gdx.input.x.toFloat(), Gdx.input.y.toFloat(), 0f)
@@ -144,5 +148,32 @@ class SecondScreen : KtxScreen {
         batch.disposeSafely()
         fps.disposeSafely()
         shape.disposeSafely()
+    }
+
+    private fun handleInput() {
+        if (Gdx.input.isKeyPressed(Input.Keys.A)) {
+            camera.zoom += 0.02.toFloat()
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.Q)) {
+            camera.zoom -= 0.02.toFloat()
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+            camera.translate(-3f, 0f, 0f)
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+            camera.translate(3f, 0f, 0f)
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+            camera.translate(0f, -3f, 0f)
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
+            camera.translate(0f, 3f, 0f)
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.W)) {
+            camera.rotate(-rotationSpeed, 0f, 0f, 1f)
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.E)) {
+            camera.rotate(rotationSpeed, 0f, 0f, 1f)
+        }
     }
 }
