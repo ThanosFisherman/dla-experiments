@@ -72,8 +72,11 @@ class Snowflake(private val width: Float, private val height: Float) {
 
         val mag = particleVector.len()
 
-        particleVector.setAngleRad(angleRad)
-        particleVector.setLength(mag)
+//        particleVector.setAngleRad(angleRad)
+//        particleVector.setLength(mag)
+
+        particleVector.x = mag * MathUtils.cos(angleRad)
+        particleVector.y = mag * MathUtils.sin(angleRad)
 
         //println(vec.angleDeg())
     }
