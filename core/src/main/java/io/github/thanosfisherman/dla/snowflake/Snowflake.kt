@@ -44,6 +44,24 @@ class Snowflake(private val width: Float, private val height: Float) {
                 alignPart.draw(shape, color)
                 alignRefl.draw(shape, color)
             }
+
+            /*       val p = part.rotateDeg(30f).apply { draw(shape, color) }
+            p.reflectDeg(180f).draw(shape, color)
+
+            val p1 = p.rotateDeg(60f).apply { draw(shape, color) }
+            p1.reflectDeg(240f).draw(shape, color)
+
+            val p2 = p1.rotateDeg(60f).apply { draw(shape, color) }
+            p2.reflectDeg(300f).draw(shape, color)
+
+            val p3 = p2.rotateDeg(60f).apply { draw(shape, color) }
+            p3.reflectDeg(360f).draw(shape, color)
+
+            val p4 = p3.rotateDeg(60f).apply { draw(shape, color) }
+            p4.reflectDeg(420f).draw(shape, color)
+
+            val p5 = p4.rotateDeg(60f).apply { draw(shape, color) }
+            p5.reflectDeg(480f).draw(shape, color)*/
         }
     }
 

@@ -1,7 +1,7 @@
 package io.github.thanosfisherman.dla
 
 object Config {
-    const val RADIUS = 4f
+    const val RADIUS = 2f
     const val SPEED = 1f
     const val ITERATIONS = 4000
     const val MAX_WALKERS = 2000
