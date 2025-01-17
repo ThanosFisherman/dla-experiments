@@ -63,8 +63,7 @@ object Dependencies {
         const val gdxTeaVMAssetLoader = "com.github.xpenatan.gdx-teavm:asset-loader:${Versions.Libgdx.gdxTeaVMVersion}"
         const val juniperDigitalTeaVM = "com.github.tommyettinger:digital:${Versions.Libgdx.juniperDigitalVersion}:sources"
         const val juniperTeaVM = "com.github.tommyettinger:juniper:${Versions.Libgdx.juniperVersion}:sources"
-
-        //        const val gdxTeaVMFreeType =
+//        const val gdxTeaVMFreeType =
 //            "com.github.xpenatan.gdx-teavm:gdx-freetype-teavm:${Versions.Libgdx.gdxTeaVMVersion}"
 //        const val box2d = "com.badlogicgames.gdx:gdx-box2d-gwt:${Versions.Libgdx.gdxVersion}"
 //        const val bulletTeaVm = "com.github.xpenatan.gdx-teavm:gdx-bullet-teavm:${Versions.Libgdx.gdxTeaVMVersion}"
@@ -172,11 +171,11 @@ object Dependencies {
         const val ktxLog = "io.github.libktx:ktx-log:${Versions.Libgdx.ktxVersion}"
         const val ktxMath = "io.github.libktx:ktx-math:${Versions.Libgdx.ktxVersion}"
         const val ktxActors = "io.github.libktx:ktx-actors:${Versions.Libgdx.ktxVersion}"
-        const val ktxAi = "io.github.libktx:ktx-ai:${Versions.Libgdx.ktxVersion}"
-
-        //        const val ktxAsync = "io.github.libktx:ktx-async:${Versions.Libgdx.ktxVersion}"
-//        const val ktxBox2d = "io.github.libktx:ktx-box2d:${Versions.Libgdx.ktxVersion}"
         const val ktxCollections = "io.github.libktx:ktx-collections:${Versions.Libgdx.ktxVersion}"
+//        const val ktxAi = "io.github.libktx:ktx-ai:${Versions.Libgdx.ktxVersion}"
+
+//        const val ktxAsync = "io.github.libktx:ktx-async:${Versions.Libgdx.ktxVersion}"
+//        const val ktxBox2d = "io.github.libktx:ktx-box2d:${Versions.Libgdx.ktxVersion}"
 //        const val ktxFreetype = "io.github.libktx:ktx-freetype:${Versions.Libgdx.ktxVersion}"
 //        const val ktxFreetypeAsync = "io.github.libktx:ktx-freetype-async:${Versions.Libgdx.ktxVersion}"
 //        const val ktxi18n = "io.github.libktx:ktx-i18n:${Versions.Libgdx.ktxVersion}"
@@ -198,8 +197,7 @@ object Dependencies {
     }
 
     object GraalDesktop {
-        const val lwjgl3Backend =
-            "com.github.Berstanio.gdx-graalhelper:gdx-svmhelper-backend-lwjgl3:${Versions.Libgdx.graalVersion}"
+        const val lwjgl3Backend = "com.github.Berstanio.gdx-graalhelper:gdx-svmhelper-backend-lwjgl3:${Versions.Libgdx.graalVersion}"
 //        const val controllersDesktop =
 //            "com.github.Berstanio.gdx-graalhelper:gdx-svmhelper-extension-controllers-lwjgl3:${Versions.Libgdx.graalVersion}"
 
