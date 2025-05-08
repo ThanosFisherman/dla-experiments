@@ -60,6 +60,7 @@ class FirstScreen : KtxScreen {
                 return true
             }
         }
+        gameViewport.update(Gdx.graphics.width, Gdx.graphics.height, true)
         simulation = Simulation(
             gameViewport.worldWidth,
             gameViewport.worldHeight,
@@ -74,6 +75,10 @@ class FirstScreen : KtxScreen {
         clearScreen(red = 0.0f, green = 0.0f, blue = 0.0f)
         Gdx.gl.glEnable(GL20.GL_BLEND)
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA)
+
+//        if (simulation.treeCount() >= 80000) {
+//            simStarted = false
+//        }
 
         if (simStarted) {
             simulation.update()
@@ -113,7 +118,7 @@ class FirstScreen : KtxScreen {
 
     private fun screenshot() {
         val pixmap = Pixmap.createFromFrameBuffer(0, 0, Gdx.graphics.backBufferWidth, Gdx.graphics.backBufferHeight)
-        val pixels = pixmap.getPixels();
+        val pixels = pixmap.getPixels()
 
         // This loop makes sure the whole screenshot is opaque and looks exactly like what the user is seeing
         val size = Gdx.graphics.backBufferWidth * Gdx.graphics.backBufferHeight * 4

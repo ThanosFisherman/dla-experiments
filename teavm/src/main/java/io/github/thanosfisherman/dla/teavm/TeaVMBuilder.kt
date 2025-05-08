@@ -5,6 +5,7 @@ package io.github.thanosfisherman.dla.teavm
 import com.github.xpenatan.gdx.backends.teavm.config.AssetFileHandle
 import com.github.xpenatan.gdx.backends.teavm.config.TeaBuildConfiguration
 import com.github.xpenatan.gdx.backends.teavm.config.TeaBuilder
+import org.teavm.tooling.TeaVMTargetType
 import org.teavm.vm.TeaVMOptimizationLevel
 import java.io.File
 
@@ -12,10 +13,10 @@ import java.io.File
 fun main() {
     val teaBuildConfiguration = TeaBuildConfiguration()
     teaBuildConfiguration.assetsPath.add(AssetFileHandle("../assets"))
-    teaBuildConfiguration.webappPath = File("build/dist").getCanonicalPath()
+    teaBuildConfiguration.webappPath = File("build/dist").canonicalPath
     teaBuildConfiguration.htmlTitle = "Diffusion-limited aggregation by Thanos!"
-    teaBuildConfiguration.htmlWidth = 800
-    teaBuildConfiguration.htmlHeight = 800
+    teaBuildConfiguration.htmlWidth = 1920
+    teaBuildConfiguration.htmlHeight = 1080
 
     // Register any extra classpath assets here:
     // teaBuildConfiguration.additionalAssetsClasspathFiles.add("io.github.thanosfisherman.dla/asset.extension");
@@ -25,6 +26,7 @@ fun main() {
     val tool = TeaBuilder.config(teaBuildConfiguration)
     tool.optimizationLevel = TeaVMOptimizationLevel.FULL
     tool.setObfuscated(true)
-    tool.mainClass = TeaVMLauncher::class.java.getName()
+    tool.mainClass = TeaVMLauncher::class.java.name
+    tool.targetType = TeaVMTargetType.WEBASSEMBLY_GC
     TeaBuilder.build(tool)
 }

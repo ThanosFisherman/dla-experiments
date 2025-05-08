@@ -1,14 +1,16 @@
 package io.github.thanosfisherman.dla
 
-object Config {
-    const val RADIUS = 2f
-    const val SPEED = 1f
-    const val ITERATIONS = 4000
-    const val MAX_WALKERS = 2000
-    const val MAX_WALKER_LIFESPAN = 100
-    private const val SPLITTER: Int = 4
+import com.badlogic.gdx.math.MathUtils
 
-    fun toIndex(xy: Float): Int = (xy / SPLITTER).toInt()
+object Config {
+    const val RADIUS = 1f
+    const val SPEED = 1f
+    const val ITERATIONS = 2000
+    const val MAX_WALKERS = 2000
+    const val MAX_WALKER_LIFESPAN = 300
+    private const val SPLITTER: Int = 1 * 10
+
+    fun toIndex(xy: Float): Int = MathUtils.ceil((xy / SPLITTER))
 
 }
 

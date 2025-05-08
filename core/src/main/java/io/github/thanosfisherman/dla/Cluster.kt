@@ -1,7 +1,9 @@
 package io.github.thanosfisherman.dla
 
 import io.github.thanosfisherman.dla.Config.toIndex
+import ktx.log.logger
 
+private val logger = logger<Cluster>()
 class Cluster(val width: Float, val height: Float) {
     val walkers = mutableListOf<Particle>()
     val dendrite = mutableListOf<Particle>()
@@ -34,7 +36,9 @@ class Cluster(val width: Float, val height: Float) {
     }
 
     fun attach(particle: Particle) {
-        particles[toIndex(particle.x)][toIndex(particle.y)].add(particle)
+        val x = toIndex(particle.x)
+        val y = toIndex(particle.y)
+        particles[x][y].add(particle)
         dendrite.add(particle)
 
         if (particle.x - particle.r < bottomLeft.x)
