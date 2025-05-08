@@ -6,19 +6,11 @@ object Dependencies {
         // NOTE TO DEVS: Please keep alphabetical order for readability and extendability
         const val ANDROID_GRADLE_PLUGIN =
             "com.android.tools.build:gradle:${Versions.Plugins.agpVersion}"
-        const val DESUGARING_PLUGIN =
-            "com.android.tools:desugar_jdk_libs:${Versions.Plugins.desugaring}"
-        const val GOOGLE_PLAY_SERVICES_GRADLE_PLUGIN =
-            "com.google.gms:google-services:${Versions.Plugins.googlePlayServices}"
 
-        const val KOTLIN_ALL_OPEN = "org.jetbrains.kotlin:kotlin-allopen:${Versions.kotlin}"
         const val KOTLIN_GRADLE_PLUGIN =
             "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
         const val KOTLIN_SERIALIZATION =
             "org.jetbrains.kotlin:kotlin-serialization:${Versions.kotlin}"
-
-        const val SAFE_ARGS_GRADLE_PLUGIN =
-            "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigation}"
 
         const val UNDERCOUCH = "de.undercouch:gradle-download-task:${Versions.Plugins.undercouch}"
 
@@ -61,12 +53,21 @@ object Dependencies {
 
         const val gdxTeaVM = "com.github.xpenatan.gdx-teavm:backend-teavm:${Versions.Libgdx.gdxTeaVMVersion}"
         const val gdxTeaVMAssetLoader = "com.github.xpenatan.gdx-teavm:asset-loader:${Versions.Libgdx.gdxTeaVMVersion}"
-        const val juniperDigitalTeaVM = "com.github.tommyettinger:digital:${Versions.Libgdx.juniperDigitalVersion}:sources"
+        const val juniperDigitalTeaVM =
+            "com.github.tommyettinger:digital:${Versions.Libgdx.juniperDigitalVersion}:sources"
         const val juniperTeaVM = "com.github.tommyettinger:juniper:${Versions.Libgdx.juniperVersion}:sources"
 //        const val gdxTeaVMFreeType =
 //            "com.github.xpenatan.gdx-teavm:gdx-freetype-teavm:${Versions.Libgdx.gdxTeaVMVersion}"
 //        const val box2d = "com.badlogicgames.gdx:gdx-box2d-gwt:${Versions.Libgdx.gdxVersion}"
 //        const val bulletTeaVm = "com.github.xpenatan.gdx-teavm:gdx-bullet-teavm:${Versions.Libgdx.gdxTeaVMVersion}"
+
+        const val teavmClasslib = "org.teavm:teavm-classlib:${Versions.Libgdx.teaVMVersion}"
+        const val teavmcore = "org.teavm:teavm-core:${Versions.Libgdx.teaVMVersion}"
+        const val teavmJsoApis = "org.teavm:teavm-jso-apis:${Versions.Libgdx.teaVMVersion}"
+        const val teavmJsoImpl = "org.teavm:teavm-jso-impl:${Versions.Libgdx.teaVMVersion}"
+        const val teavmJso = "org.teavm:teavm-jso:${Versions.Libgdx.teaVMVersion}"
+        const val teavmTooling = "org.teavm:teavm-tooling:${Versions.Libgdx.teaVMVersion}"
+
         fun getAll() =
             TeaVMDependency::class.memberProperties.filter { it.isConst }.map { it.getter.call().toString() }.toSet()
     }
@@ -136,7 +137,7 @@ object Dependencies {
             "com.badlogicgames.gdx-controllers:gdx-controllers-core:${Versions.Libgdx.gdxControllersVersion}"
         const val ashley = "com.badlogicgames.ashley:ashley:${Versions.Libgdx.ashleyVersion}"
         const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
-        const val juniper =  "com.github.tommyettinger:juniper:${Versions.Libgdx.juniperVersion}"
+        const val juniper = "com.github.tommyettinger:juniper:${Versions.Libgdx.juniperVersion}"
 //        const val controllerMapping = "de.golfgl.gdxcontrollerutils:gdx-controllerutils-mapping:${Versions.Libgdx.gdxControllerUtilsVersion}"
 //        const val controllerScene2D = "de.golfgl.gdxcontrollerutils:gdx-controllerutils-scene2d:${Versions.Libgdx.gdxControllerUtilsVersion}"
         //const val ode4j = "com.github.antzGames:gdx-ode4j:${Versions.Libgdx.ode4jVersion}"
@@ -197,7 +198,8 @@ object Dependencies {
     }
 
     object GraalDesktop {
-        const val lwjgl3Backend = "com.github.Berstanio.gdx-graalhelper:gdx-svmhelper-backend-lwjgl3:${Versions.Libgdx.graalVersion}"
+        const val lwjgl3Backend =
+            "com.github.Berstanio.gdx-graalhelper:gdx-svmhelper-backend-lwjgl3:${Versions.Libgdx.graalVersion}"
 //        const val controllersDesktop =
 //            "com.github.Berstanio.gdx-graalhelper:gdx-svmhelper-extension-controllers-lwjgl3:${Versions.Libgdx.graalVersion}"
 
