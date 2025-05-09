@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.MathUtils.sin
 import com.badlogic.gdx.math.Vector2
 import io.github.thanosfisherman.dla.Config.RADIUS
 import ktx.math.vec2
+import kotlin.math.sqrt
 
 data class Particle(
     var x: Float,
@@ -72,6 +73,18 @@ internal fun Particle.dist2(other: Particle): Float {
     val dx = x - other.x
     val dy = y - other.y
     return dx * dx + dy * dy
+}
+
+internal fun Particle.overlaps(other: Particle): Boolean {
+    val distanceSquared = dist2(other)
+    val minDistance = (RADIUS * 2) / 3
+    return distanceSquared < minDistance * minDistance
+}
+
+internal fun Particle.dist(other: Particle): Float {
+    val dx = x - other.x
+    val dy = y - other.y
+    return sqrt(dx * dx + dy * dy)
 }
 
 internal fun Vector2.reflectDeg(degrees: Int): Vector2 {

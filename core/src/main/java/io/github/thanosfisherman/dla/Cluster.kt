@@ -31,6 +31,10 @@ class Cluster(val width: Float, val height: Float) {
         walkers.remove(particle)
     }
 
+    fun removeFromDendrite(particle: Particle) {
+        dendrite.remove(particle)
+    }
+
     fun isContained(particle: Particle): Boolean {
         return (bottomLeft.x < particle.x + particle.r && bottomLeft.y < particle.y + particle.r && topRight.x > particle.x - particle.r && topRight.y > particle.y - particle.r)
     }
