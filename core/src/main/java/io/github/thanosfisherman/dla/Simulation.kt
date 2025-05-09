@@ -13,13 +13,12 @@ import ktx.log.logger
 private val logger = logger<Simulation>()
 
 class Simulation(
-    width: Float,
-    height: Float,
+    private val cluster: Cluster,
     private val walkStrategy: WalkStrategy,
     seedStrategy: InitialSeedStrategy,
     private val spawnStrategy: SpawnStrategy
 ) {
-    private val cluster = Cluster(width, height)
+
     var isDebug = false
     var hideWalkers = true
 
@@ -69,10 +68,10 @@ class Simulation(
 
     //TODO: maybe use flyweight pattern to share same instances of Color?
     private fun dendriteColor(particle: Particle): Color {
-        val hu = particle.lifeTime   * 0.000004f
-        val blue =  hu * 0.88f
-        val green = hu * 0.098f
-        val red =  0.28f
+        val hu = particle.lifeTime * 0.000046f
+        val blue = hu * 0.88f
+        val green = 0.035f
+        val red = 0.098f * hu
 
         return Color(red, green, blue, 1f)
     }

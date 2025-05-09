@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.PixmapIO
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.utils.viewport.ScreenViewport
+import io.github.thanosfisherman.dla.Cluster
 import io.github.thanosfisherman.dla.FrameRate
 import io.github.thanosfisherman.dla.Simulation
 import io.github.thanosfisherman.dla.seed.RandomInitialSeedStrategy
@@ -61,10 +62,10 @@ class FirstScreen : KtxScreen {
             }
         }
         gameViewport.update(Gdx.graphics.width, Gdx.graphics.height, true)
+        val cluster = Cluster(gameViewport.worldWidth, gameViewport.worldHeight)
         simulation = Simulation(
-            gameViewport.worldWidth,
-            gameViewport.worldHeight,
-            RandomWalkStrategy(gameViewport.worldWidth, gameViewport.worldHeight),
+            cluster,
+            RandomWalkStrategy(cluster),
             RandomInitialSeedStrategy(),
             RandomAllOverSpawnStrategy()
         )
