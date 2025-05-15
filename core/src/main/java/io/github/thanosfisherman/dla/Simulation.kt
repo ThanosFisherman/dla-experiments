@@ -47,7 +47,7 @@ class Simulation(
                 if (cluster.isContained(walker) && cluster.canAttach(walker)) {
                     if (walker.lifeTime > MAX_WALKER_LIFESPAN) {
                         cluster.attach(walker)
-                        removeOverlappingParticles(walker)
+                        //removeOverlappingParticles(walker)
                     }
                     cluster.removeWalker(walker)
                 }
@@ -69,10 +69,10 @@ class Simulation(
 
     //TODO: maybe use flyweight pattern to share same instances of Color?
     private fun dendriteColor(particle: Particle): Color {
-        val hu = particle.lifeTime * 0.00046f
+        val hu = particle.lifeTime * 0.000365f
         val blue = hu * 0.88f
         val green = 0.035f
-        val red = 0.098f * hu
+        val red = 0.058f * hu
 
         return Color(red, green, blue, 1f)
     }

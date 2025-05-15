@@ -7,7 +7,7 @@ object Config {
     const val SPEED = 2f
     const val ITERATIONS = 1000
     const val MAX_WALKERS = 800
-    const val MAX_WALKER_LIFESPAN = 100
+    const val MAX_WALKER_LIFESPAN = 400
     private const val SPLITTER: Int = 4
 
     fun toIndex(xy: Float): Int = MathUtils.ceil((xy / SPLITTER))
