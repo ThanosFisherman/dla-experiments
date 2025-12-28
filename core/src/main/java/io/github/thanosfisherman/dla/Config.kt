@@ -3,7 +3,7 @@ package io.github.thanosfisherman.dla
 import com.badlogic.gdx.math.MathUtils
 
 object Config {
-    const val RADIUS = 1.2f
+    const val RADIUS = 2f
     const val SPEED = 2f
     const val ITERATIONS = 1000
     const val MAX_WALKERS = 800

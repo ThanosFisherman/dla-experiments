@@ -15,8 +15,8 @@ class Game : KtxGame<KtxScreen>() {
     override fun create() {
         super.create()
         Gdx.app.logLevel = Application.LOG_DEBUG
-        addScreen(FirstScreen())
-        setScreen<FirstScreen>()
+        addScreen(SecondScreen())
+        setScreen<SecondScreen>()
     }
 
     companion object {
