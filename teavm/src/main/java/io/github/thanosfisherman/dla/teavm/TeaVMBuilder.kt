@@ -2,31 +2,40 @@
 
 package io.github.thanosfisherman.dla.teavm
 
-import com.github.xpenatan.gdx.backends.teavm.config.AssetFileHandle
-import com.github.xpenatan.gdx.backends.teavm.config.TeaBuildConfiguration
-import com.github.xpenatan.gdx.backends.teavm.config.TeaBuilder
-import org.teavm.tooling.TeaVMTargetType
+
+import com.github.xpenatan.gdx.teavm.backends.shared.config.AssetFileHandle
+import com.github.xpenatan.gdx.teavm.backends.shared.config.compiler.TeaCompiler
+import com.github.xpenatan.gdx.teavm.backends.web.config.backend.WebBackend
+import org.teavm.tooling.TeaVMSourceFilePolicy
 import org.teavm.vm.TeaVMOptimizationLevel
 import java.io.File
 
-/** Builds the TeaVM/HTML application.  */
-fun main() {
-    val teaBuildConfiguration = TeaBuildConfiguration()
-    teaBuildConfiguration.assetsPath.add(AssetFileHandle("../assets"))
-    teaBuildConfiguration.webappPath = File("build/dist").canonicalPath
-    teaBuildConfiguration.htmlTitle = "Diffusion-limited aggregation by Thanos!"
-    teaBuildConfiguration.htmlWidth = 1920
-    teaBuildConfiguration.htmlHeight = 1080
+/** Builds the TeaVM/HTML application. */
+object TeaVMBuilder {
+    private const val DEBUG = true
 
-    // Register any extra classpath assets here:
-    // teaBuildConfiguration.additionalAssetsClasspathFiles.add("io.github.thanosfisherman.dla/asset.extension");
+    @JvmStatic
+    fun main(arguments: Array<String>) {
 
-    // Register any classes or packages that require reflection here:
-    // TeaReflectionSupplier.addReflectionClass("io.github.thanosfisherman.dla.reflect");
-    val tool = TeaBuilder.config(teaBuildConfiguration)
-    tool.optimizationLevel = TeaVMOptimizationLevel.FULL
-    tool.setObfuscated(true)
-    tool.mainClass = TeaVMLauncher::class.java.name
-    tool.targetType = TeaVMTargetType.WEBASSEMBLY_GC
-    TeaBuilder.build(tool)
+        val webBackend = WebBackend().apply {
+            startJettyAfterBuild = true
+            htmlTitle = "Thanos Fisherman"
+            htmlWidth = 900
+            htmlHeight = 600
+            isWebAssembly = false
+            webappFolderName = "webapp"
+            jettyPort = 8080
+        }
+
+        TeaCompiler(webBackend).apply {
+            addAssets(AssetFileHandle("../assets"))
+            setOptimizationLevel(TeaVMOptimizationLevel.SIMPLE)
+            setMainClass(TeaVMLauncher::class.qualifiedName)
+            setObfuscated(false)
+            setDebugInformationGenerated(true)
+            setSourceMapsFileGenerated(true)
+            setSourceFilePolicy(TeaVMSourceFilePolicy.LINK_LOCAL_FILES)
+            build(File("dist"))
+        }
+    }
 }

@@ -5,7 +5,7 @@ object Versions {
 
     // region Common
 
-    const val kotlin = "2.1.0"
+    const val kotlin = "2.3.0"
     const val coroutines = "1.10.2"
     const val kotlinxDateTime = "0.3.0"
     const val kotlinSerialization = "1.6.3"
@@ -21,20 +21,18 @@ object Versions {
     }
 
     object Plugins {
-        const val agpVersion = "8.9.2"
-
+        const val agpVersion = "8.13.2"
         const val undercouch = "5.6.0"
-        const val grettyVersion = "3.1.5"
     }
 
     object Libgdx {
         const val ashleyVersion = "1.7.4"
-        const val gdxVersion = "1.13.5"
+        const val gdxVersion = "1.14.0"
         const val gdxControllersVersion = "2.2.1"
         const val gdxControllerUtilsVersion = "2.3.0"
         const val ktxVersion = "1.13.1-rc1"
-        const val gdxTeaVMVersion = "1.2.0"
-        const val teaVMVersion = "0.12.0"
+        const val gdxTeaVMVersion = "1.5.1"
+        const val teaVMVersion = "0.13.0"
         const val box2dlightsVersion = "1.5"
         const val aiVersion = "1.8.2"
         const val kryoVersion = "5.5.0"
@@ -57,9 +55,9 @@ object Versions {
 
     object Target {
         const val jvmTarget = "21"
-        const val compileSdkVersion = 35
+        const val compileSdkVersion = 36
         const val minSdkVersion = 24
-        const val targetSdkVersion = 35
+        const val targetSdkVersion = 36
         val sourceCompatibility = JavaVersion.VERSION_21
         val targetCompatibility = JavaVersion.VERSION_21
         val javaToolchainVersion = JavaLanguageVersion.of(21)

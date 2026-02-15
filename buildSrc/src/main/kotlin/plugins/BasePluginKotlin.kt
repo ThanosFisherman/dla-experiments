@@ -11,6 +11,7 @@ import org.gradle.kotlin.dsl.named
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
+import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 import java.io.File
 
 class BasePluginKotlin : Plugin<Project> {
@@ -47,7 +48,7 @@ class BasePluginKotlin : Plugin<Project> {
 
         project.tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile>().configureEach {
             compilerOptions {
-                languageVersion.set(org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_0)
+                languageVersion.set(KotlinVersion.KOTLIN_2_3)
                 jvmTarget.set(JvmTarget.fromTarget(Versions.Target.jvmTarget))
             }
         }

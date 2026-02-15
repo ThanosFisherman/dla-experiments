@@ -1,8 +1,8 @@
 package io.github.thanosfisherman.dla.teavm
 
-import com.github.xpenatan.gdx.backends.teavm.assetloader.AssetInstance
-import com.github.xpenatan.gdx.backends.teavm.assetloader.AssetLoader
-import com.github.xpenatan.gdx.backends.teavm.assetloader.AssetLoaderListener
+import com.github.xpenatan.gdx.teavm.backends.web.assetloader.AssetInstance
+import com.github.xpenatan.gdx.teavm.backends.web.assetloader.AssetLoader
+import com.github.xpenatan.gdx.teavm.backends.web.assetloader.AssetLoaderListener
 
 
 class JSLibraryLoader {
