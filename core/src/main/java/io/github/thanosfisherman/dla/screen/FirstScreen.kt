@@ -102,7 +102,7 @@ class FirstScreen : KtxScreen {
 
         uiViewport.apply()
         batch.use(uiViewport.camera.combined) {
-            fps.render(it, simulation.walkerCount(), simulation.treeCount(), 0f, uiViewport.worldHeight)
+            fps.render(it, simulation.walkerCount(), simulation.treeCount(), 0f, uiViewport.worldHeight - 10)
         }
     }
 
