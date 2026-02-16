@@ -1,7 +1,7 @@
 package io.github.thanosfisherman.dla.walk
 
 import com.badlogic.gdx.math.MathUtils.*
-import io.github.thanosfisherman.dla.Noise
+import io.github.thanosfisherman.dla.utils.Noise
 import io.github.thanosfisherman.dla.Particle
 
 private const val timescale = 0.2f

@@ -10,8 +10,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.utils.viewport.ScreenViewport
-import io.github.thanosfisherman.dla.FrameRate
-import io.github.thanosfisherman.dla.HighResScreenshot
+import io.github.thanosfisherman.dla.utils.FrameRate
+import io.github.thanosfisherman.dla.utils.HighResScreenshot
 import io.github.thanosfisherman.dla.snowflake.Snowflake
 import ktx.app.KtxInputAdapter
 import ktx.app.KtxScreen

@@ -6,7 +6,7 @@ import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.math.MathUtils.cos
 import com.badlogic.gdx.math.MathUtils.sin
 import com.badlogic.gdx.math.Vector2
-import io.github.thanosfisherman.dla.Config.RADIUS
+import io.github.thanosfisherman.dla.dlaalgo.Config.RADIUS
 import ktx.math.vec2
 import kotlin.math.sqrt
 

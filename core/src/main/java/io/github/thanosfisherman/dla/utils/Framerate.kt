@@ -1,4 +1,4 @@
-package io.github.thanosfisherman.dla
+package io.github.thanosfisherman.dla.utils
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Texture

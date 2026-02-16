@@ -1,7 +1,9 @@
 package io.github.thanosfisherman.dla.walk
 
 import io.github.thanosfisherman.dla.*
-import io.github.thanosfisherman.dla.Config.SPEED
+import io.github.thanosfisherman.dla.dlaalgo.Config.SPEED
+import io.github.thanosfisherman.dla.dlaalgo.Cluster
+import io.github.thanosfisherman.dla.utils.Juniper
 
 class RandomWalkStrategy(private val cluster: Cluster) : WalkStrategy {
     override fun walk(particle: Particle) {

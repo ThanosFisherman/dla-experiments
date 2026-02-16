@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.math.Vector2
 import io.github.thanosfisherman.dla.*
+import io.github.thanosfisherman.dla.utils.Juniper
 import ktx.log.logger
 import ktx.math.vec2
 

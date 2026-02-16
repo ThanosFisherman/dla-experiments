@@ -1,4 +1,4 @@
-package io.github.thanosfisherman.dla
+package io.github.thanosfisherman.dla.dlaalgo
 
 import com.badlogic.gdx.math.MathUtils
 

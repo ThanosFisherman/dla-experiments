@@ -1,6 +1,6 @@
-package io.github.thanosfisherman.dla
+package io.github.thanosfisherman.dla.utils
 
-import com.badlogic.gdx.math.MathUtils.random
+import com.badlogic.gdx.math.MathUtils
 import kotlin.math.cos
 import kotlin.math.floor
 
@@ -22,7 +22,7 @@ object Noise {
     fun noise(_x: Float, _y: Float = 0f, _z: Float = 0f): Float {
         if (perlin.isEmpty()) {
             for (i in 0..PERLIN_SIZE) {
-                perlin.add(random())
+                perlin.add(MathUtils.random())
             }
         }
 

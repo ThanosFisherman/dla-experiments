@@ -1,4 +1,4 @@
-package io.github.thanosfisherman.dla
+package io.github.thanosfisherman.dla.utils
 
 import com.badlogic.gdx.Application
 import com.badlogic.gdx.Gdx

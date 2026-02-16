@@ -1,10 +1,13 @@
-package io.github.thanosfisherman.dla
+package io.github.thanosfisherman.dla.dlaalgo
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
-import io.github.thanosfisherman.dla.Config.MAX_WALKERS
-import io.github.thanosfisherman.dla.Config.MAX_WALKER_LIFESPAN
+import io.github.thanosfisherman.dla.Particle
+import io.github.thanosfisherman.dla.dlaalgo.Config.MAX_WALKERS
+import io.github.thanosfisherman.dla.dlaalgo.Config.MAX_WALKER_LIFESPAN
+import io.github.thanosfisherman.dla.draw
+import io.github.thanosfisherman.dla.overlaps
 import io.github.thanosfisherman.dla.seed.InitialSeedStrategy
 import io.github.thanosfisherman.dla.spawn.SpawnStrategy
 import io.github.thanosfisherman.dla.walk.WalkStrategy

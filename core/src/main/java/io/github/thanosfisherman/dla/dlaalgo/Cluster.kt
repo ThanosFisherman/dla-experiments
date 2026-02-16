@@ -1,6 +1,7 @@
-package io.github.thanosfisherman.dla
+package io.github.thanosfisherman.dla.dlaalgo
 
-import io.github.thanosfisherman.dla.Config.toIndex
+import io.github.thanosfisherman.dla.dlaalgo.Config.toIndex
+import io.github.thanosfisherman.dla.Particle
 import ktx.log.logger
 
 private val logger = logger<Cluster>()

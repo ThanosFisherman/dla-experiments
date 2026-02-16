@@ -1,4 +1,7 @@
-package io.github.thanosfisherman.dla
+package io.github.thanosfisherman.dla.dlaalgo
+
+import io.github.thanosfisherman.dla.Particle
+import io.github.thanosfisherman.dla.dist2
 
 object Neighbours {
 

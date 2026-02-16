@@ -20,10 +20,10 @@ object TeaVMBuilder {
         val webBackend = WebBackend().apply {
             startJettyAfterBuild = true
             htmlTitle = "Thanos Fisherman"
-            htmlWidth = 900
-            htmlHeight = 600
+            htmlWidth = 1920
+            htmlHeight = 1080
             isWebAssembly = false
-            webappFolderName = "webapp"
+            //webappFolderName = "webapp"
             jettyPort = 8080
         }
 
@@ -35,7 +35,7 @@ object TeaVMBuilder {
             setDebugInformationGenerated(true)
             setSourceMapsFileGenerated(true)
             setSourceFilePolicy(TeaVMSourceFilePolicy.LINK_LOCAL_FILES)
-            build(File("dist"))
+            build(File("webapp"))
         }
     }
 }

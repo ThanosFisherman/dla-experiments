@@ -5,7 +5,7 @@ package io.github.thanosfisherman.dla.teavm
 
 import com.github.xpenatan.gdx.teavm.backends.web.WebApplication
 import com.github.xpenatan.gdx.teavm.backends.web.WebApplicationConfiguration
-import io.github.thanosfisherman.game.Game.Companion.create
+import io.github.thanosfisherman.dla.Game.Companion.create
 
 
 /**
@@ -25,8 +25,8 @@ object TeaVMLauncher {
             showDownloadLogs = false
             //preloadListener = AssetInstance.getLoaderInstance().loadScript("freetype.js")
             // change these to both 0 to use all available space, or both -1 for the canvas size.
-            width = 0
-            height = 0
+            width = -1
+            height = -1
         }
         WebApplication(create(), config)
     }

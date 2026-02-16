@@ -10,9 +10,9 @@ import com.badlogic.gdx.graphics.PixmapIO
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.utils.viewport.ScreenViewport
-import io.github.thanosfisherman.dla.Cluster
-import io.github.thanosfisherman.dla.FrameRate
-import io.github.thanosfisherman.dla.Simulation
+import io.github.thanosfisherman.dla.dlaalgo.Cluster
+import io.github.thanosfisherman.dla.utils.FrameRate
+import io.github.thanosfisherman.dla.dlaalgo.Simulation
 import io.github.thanosfisherman.dla.seed.RandomInitialSeedStrategy
 import io.github.thanosfisherman.dla.spawn.RandomAllOverSpawnStrategy
 import io.github.thanosfisherman.dla.walk.RandomWalkStrategy
