@@ -2,10 +2,9 @@
 
 package io.github.thanosfisherman.dla.teavm
 
-
 import com.github.xpenatan.gdx.teavm.backends.web.WebApplication
 import com.github.xpenatan.gdx.teavm.backends.web.WebApplicationConfiguration
-import io.github.thanosfisherman.dla.Game.Companion.create
+import io.github.thanosfisherman.dla.Game
 
 
 /**
@@ -28,6 +27,6 @@ object TeaVMLauncher {
             width = 0
             height = 0
         }
-        WebApplication(create(), config)
+        WebApplication(Game.create(), config)
     }
 }

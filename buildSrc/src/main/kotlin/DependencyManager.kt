@@ -21,7 +21,7 @@ fun DependencyHandler.addAndroidDependencies() {
 
 fun DependencyHandler.addTeaVMDependencies() {
     implementation(project(ModuleDependencies.CORE))
-    Dependencies.TeaVMDependency.getAll().forEach { implementation(it) }
+    //Dependencies.TeaVMDependency.getAll().forEach { implementation(it) }
 }
 
 fun DependencyHandler.addGraalDesktopDependencies() {

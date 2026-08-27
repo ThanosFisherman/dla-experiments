@@ -5,7 +5,7 @@ object Versions {
 
     // region Common
 
-    const val kotlin = "2.3.0"
+    const val kotlin = "2.4.10"
     const val coroutines = "1.10.2"
     const val kotlinxDateTime = "0.3.0"
     const val kotlinSerialization = "1.6.3"
@@ -27,12 +27,12 @@ object Versions {
 
     object Libgdx {
         const val ashleyVersion = "1.7.4"
-        const val gdxVersion = "1.14.0"
+        const val gdxVersion = "1.14.2"
         const val gdxControllersVersion = "2.2.1"
         const val gdxControllerUtilsVersion = "2.3.0"
         const val ktxVersion = "1.13.1-rc1"
-        const val gdxTeaVMVersion = "1.5.1"
-        const val teaVMVersion = "0.13.0"
+        const val gdxTeaVMVersion = "1.6.2"
+        const val teaVMVersion = "0.15.0"
         const val box2dlightsVersion = "1.5"
         const val aiVersion = "1.8.2"
         const val kryoVersion = "5.5.0"
